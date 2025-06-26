@@ -18,6 +18,7 @@ const Tab = createBottomTabNavigator();
 
 const MyTabs = () => {
 
+    //FUENTES CARGADAS
     let [fontsLoaded] = useFonts({
         Chicle: require('../font/Chicle/Chicle-Regular.ttf'),
 
@@ -31,8 +32,10 @@ const MyTabs = () => {
 
     return (
 
+        /*MIS TABS Y SUS ESTILOS*/
         <Tab.Navigator>
-            <Tab.Screen name="INICIO"
+            
+            <Tab.Screen name="INICIO" /*TABS INICIO*/
                 options={{
                     tabBarLabel: 'INICIO',
                     tabBarStyle: { backgroundColor: '#FC4A1A' },
@@ -41,18 +44,18 @@ const MyTabs = () => {
                     headerStyle: { backgroundColor: '#FC4A1A' },
                     headerTitleStyle: {
                         fontFamily: 'DynaPuff',
-                        fontSize: 30,
+                        fontSize: 36,
                         color: 'white',
                     },
                     tabBarIcon: () => (
-                        <FontAwesome name="home" size={24} color="black" />
+                        <FontAwesome name="home" size={26} color="black" />
                     ),
                     //tabBarBadge: 1
                 }
                 }
                 component={Home} />
 
-            <Tab.Screen name="VIAJES"
+            <Tab.Screen name="VIAJES" /*TABS VIAJES*/
                 options={{
                     tabBarLabel: 'VIAJES',
                     tabBarStyle: { backgroundColor: '#FC4A1A' },
@@ -61,17 +64,17 @@ const MyTabs = () => {
                     headerStyle: { backgroundColor: '#FC4A1A' },
                     headerTitleStyle: {
                         fontFamily: 'DynaPuff',
-                        fontSize: 30,
+                        fontSize: 36,
                         color: 'white',
                     },
                     tabBarIcon: () => (
-                        <MaterialCommunityIcons name="airplane-plus" size={24} color="black" />
+                        <MaterialCommunityIcons name="airplane-plus" size={26} color="black" />
                     ),
                     //tabBarBadge: 0
                 }}
                 component={Viajes} />
 
-            <Tab.Screen name="PERSONAS"
+            <Tab.Screen name="PERSONAS" /*TABS PERSONAS*/
                 options={{
                     tabBarLabel: 'PERSONAS',
                     tabBarStyle: { backgroundColor: '#FC4A1A' },
@@ -80,17 +83,17 @@ const MyTabs = () => {
                     headerStyle: { backgroundColor: '#FC4A1A' },
                     headerTitleStyle: {
                         fontFamily: 'DynaPuff',
-                        fontSize: 30,
+                        fontSize: 36,
                         color: 'white',
                     },
                     tabBarIcon: () => (
-                        <FontAwesome6 name="person-circle-plus" size={24} color="black" />
+                        <FontAwesome6 name="person-circle-plus" size={26} color="black" />
                     ),
                     //tabBarBadge: 0
                 }}
                 component={Personas} />
 
-            <Tab.Screen name="DESTINOS"
+            <Tab.Screen name="DESTINOS" /*TABS DESTINOS*/
                 options={{
                     tabBarLabel: 'DESTINOS',
                     tabBarStyle: { backgroundColor: '#FC4A1A' },
@@ -99,11 +102,11 @@ const MyTabs = () => {
                     headerStyle: { backgroundColor: '#FC4A1A' },
                     headerTitleStyle: {
                         fontFamily: 'DynaPuff',
-                        fontSize: 30,
+                        fontSize: 36,
                         color: 'white',
                     },
                     tabBarIcon: () => (
-                        <AntDesign name="enviroment" size={24} color="black" />
+                        <AntDesign name="enviroment" size={26} color="black" />
                     ),
                     //tabBarBadge: 0
                 }}

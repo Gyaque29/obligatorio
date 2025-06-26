@@ -4,6 +4,7 @@ import { styles } from "../styles/styles";
 
 export const Destino = () => {
 
+    //FUENTES CARGADAS
     let [fontsLoaded] = useFonts({
         Chicle: require('../font/Chicle/Chicle-Regular.ttf'),
 
