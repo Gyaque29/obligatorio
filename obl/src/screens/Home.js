@@ -1,5 +1,6 @@
 import { View, Text } from "react-native"
 import { useFonts } from "expo-font"
+import { styles } from "../styles/styles";
 
 export const Home = () => {
     let [fontsLoaded] = useFonts({
@@ -15,10 +16,7 @@ export const Home = () => {
 
     return (
         <View>
-            <Text style={{ fontFamily: "Chicle" }}>Pantalla</Text>
-            <Text style={{ fontFamily: "DynaPuff" }}>Pantalla</Text>
-            <Text style={{ fontFamily: "DynaPuff2" }}>Pantalla</Text>
-            <Text style={{ fontFamily: "Lilita_One" }}>Pantalla</Text>
+            <Text style={[{ fontFamily: "Lilita_One" }, styles.texttitleseccion]}>Bienvenidos !</Text>
         </View>
     )
 }
