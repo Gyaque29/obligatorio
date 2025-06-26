@@ -8,23 +8,23 @@ DynaPuff is a variable font with these axes:
   wght
 
 This means all the styles are contained in a single file:
-  DynaPuff-VariableFont_wdth,wght.ttf
+  DynaPuff/DynaPuff-VariableFont_wdth,wght.ttf
 
 If your app fully supports variable fonts, you can now pick intermediate styles
 that aren’t available as static fonts. Not all apps support variable fonts, and
 in those cases you can use the static font files for DynaPuff:
-  static/DynaPuff_Condensed-Regular.ttf
-  static/DynaPuff_Condensed-Medium.ttf
-  static/DynaPuff_Condensed-SemiBold.ttf
-  static/DynaPuff_Condensed-Bold.ttf
-  static/DynaPuff_SemiCondensed-Regular.ttf
-  static/DynaPuff_SemiCondensed-Medium.ttf
-  static/DynaPuff_SemiCondensed-SemiBold.ttf
-  static/DynaPuff_SemiCondensed-Bold.ttf
-  static/DynaPuff-Regular.ttf
-  static/DynaPuff-Medium.ttf
-  static/DynaPuff-SemiBold.ttf
-  static/DynaPuff-Bold.ttf
+  DynaPuff/static/DynaPuff_Condensed-Regular.ttf
+  DynaPuff/static/DynaPuff_Condensed-Medium.ttf
+  DynaPuff/static/DynaPuff_Condensed-SemiBold.ttf
+  DynaPuff/static/DynaPuff_Condensed-Bold.ttf
+  DynaPuff/static/DynaPuff_SemiCondensed-Regular.ttf
+  DynaPuff/static/DynaPuff_SemiCondensed-Medium.ttf
+  DynaPuff/static/DynaPuff_SemiCondensed-SemiBold.ttf
+  DynaPuff/static/DynaPuff_SemiCondensed-Bold.ttf
+  DynaPuff/static/DynaPuff-Regular.ttf
+  DynaPuff/static/DynaPuff-Medium.ttf
+  DynaPuff/static/DynaPuff-SemiBold.ttf
+  DynaPuff/static/DynaPuff-Bold.ttf
 
 Get started
 -----------

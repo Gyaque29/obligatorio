@@ -3,14 +3,26 @@ import { useFonts } from "expo-font"
 
 export const Home = () => {
     let [fontsLoaded] = useFonts({
-        Dayna: require('../font/static/DynaPuff_Condensed-Bold.ttf'),
+        Chicle: require('../font/Chicle/Chicle-Regular.ttf'),
+
+        DynaPuff: require('../font/DynaPuff/static/DynaPuff_Condensed-Bold.ttf'),
+        DynaPuff2: require('../font/DynaPuff/static/DynaPuff_Condensed-Medium.ttf'),
+
+        Lilita_One: require('../font/Lilita_One/LilitaOne-Regular.ttf'),
+
+
+        
+
     });
 
     if (!fontsLoaded) return null
 
     return (
         <View>
-            <Text style={{ fontFamily: "Dayna" }}>pantalla</Text>
+            <Text style={{ fontFamily: "Chicle" }}>Pantalla</Text>
+            <Text style={{ fontFamily: "DynaPuff" }}>Pantalla</Text>
+            <Text style={{ fontFamily: "DynaPuff2" }}>Pantalla</Text>
+            <Text style={{ fontFamily: "Lilita_One" }}>Pantalla</Text>
         </View>
     )
 }
