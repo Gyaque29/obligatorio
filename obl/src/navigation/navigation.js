@@ -32,7 +32,7 @@ const MyTabs = () => {
     return (
 
         <Tab.Navigator>
-            <Tab.Screen name="PANTALLA DE INICIO"
+            <Tab.Screen name="INICIO"
                 options={{
                     tabBarLabel: 'INICIO',
                     tabBarStyle: { backgroundColor: '#FC4A1A' },
@@ -47,16 +47,16 @@ const MyTabs = () => {
                     tabBarIcon: () => (
                         <FontAwesome name="home" size={24} color="black" />
                     ),
-                    //tabBarBadge: 0
+                    //tabBarBadge: 1
                 }
                 }
                 component={Home} />
 
-            <Tab.Screen name="PANTALLA VIAJES"
+            <Tab.Screen name="VIAJES"
                 options={{
                     tabBarLabel: 'VIAJES',
-                    tabBarLabelStyle: { fontFamily: 'Lilita_One', color:'white' },
                     tabBarStyle: { backgroundColor: '#FC4A1A' },
+                    tabBarLabelStyle: { fontFamily: 'Lilita_One', color:'white' },
                     headerTitleAlign: 'center',
                     headerStyle: { backgroundColor: '#FC4A1A' },
                     headerTitleStyle: {
@@ -71,14 +71,13 @@ const MyTabs = () => {
                 }}
                 component={Viajes} />
 
-            <Tab.Screen name="PANTALLA PERSONAS"
+            <Tab.Screen name="PERSONAS"
                 options={{
                     tabBarLabel: 'PERSONAS',
-                    tabBarLabelStyle: { fontFamily: 'Lilita_One' },
                     tabBarStyle: { backgroundColor: '#FC4A1A' },
                     tabBarLabelStyle: { fontFamily: 'Lilita_One', color: 'white'},
-                    headerStyle: { backgroundColor: '#FC4A1A' },
                     headerTitleAlign: 'center',
+                    headerStyle: { backgroundColor: '#FC4A1A' },
                     headerTitleStyle: {
                         fontFamily: 'DynaPuff',
                         fontSize: 30,
@@ -91,14 +90,13 @@ const MyTabs = () => {
                 }}
                 component={Personas} />
 
-            <Tab.Screen name="PANTALLA DESTINO"
+            <Tab.Screen name="DESTINOS"
                 options={{
                     tabBarLabel: 'DESTINOS',
-                    tabBarLabelStyle: { fontFamily: 'Lilita_One' },
-                    headerStyle: { backgroundColor: '#FC4A1A' },
                     tabBarStyle: { backgroundColor: '#FC4A1A' },
                     tabBarLabelStyle: { fontFamily: 'Lilita_One', color: 'white'},
                     headerTitleAlign: 'center',
+                    headerStyle: { backgroundColor: '#FC4A1A' },
                     headerTitleStyle: {
                         fontFamily: 'DynaPuff',
                         fontSize: 30,
