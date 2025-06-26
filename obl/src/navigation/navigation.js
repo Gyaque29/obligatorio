@@ -34,30 +34,35 @@ const MyTabs = () => {
         <Tab.Navigator>
             <Tab.Screen name="PANTALLA DE INICIO"
                 options={{
-                    tabBarLabel: 'Inicio',
-                    tabBarLabelStyle: { fontFamily: 'Lilita_One' },
+                    tabBarLabel: 'INICIO',
+                    tabBarStyle: { backgroundColor: '#FC4A1A' },
+                    tabBarLabelStyle: { fontFamily: 'Lilita_One', color:'white'},
                     headerTitleAlign: 'center',
+                    headerStyle: { backgroundColor: '#FC4A1A' },
                     headerTitleStyle: {
                         fontFamily: 'DynaPuff',
-                        fontSize: 22, 
+                        fontSize: 30,
+                        color: 'white',
                     },
-                        tabBarIcon: () => (
-                            <FontAwesome name="home" size={24} color="black" />
-                        ),
-                        //tabBarBadge: 0
-                    }
+                    tabBarIcon: () => (
+                        <FontAwesome name="home" size={24} color="black" />
+                    ),
+                    //tabBarBadge: 0
+                }
                 }
                 component={Home} />
 
             <Tab.Screen name="PANTALLA VIAJES"
                 options={{
-                    tabBarLabel: 'Viajes',
-                    tabBarLabelStyle: { fontFamily: 'Lilita_One' },
-                    tabBarLabelStyle: { fontFamily: 'Lilita_One' },
+                    tabBarLabel: 'VIAJES',
+                    tabBarLabelStyle: { fontFamily: 'Lilita_One', color:'white' },
+                    tabBarStyle: { backgroundColor: '#FC4A1A' },
                     headerTitleAlign: 'center',
+                    headerStyle: { backgroundColor: '#FC4A1A' },
                     headerTitleStyle: {
                         fontFamily: 'DynaPuff',
-                        fontSize: 22, 
+                        fontSize: 30,
+                        color: 'white',
                     },
                     tabBarIcon: () => (
                         <MaterialCommunityIcons name="airplane-plus" size={24} color="black" />
@@ -68,13 +73,16 @@ const MyTabs = () => {
 
             <Tab.Screen name="PANTALLA PERSONAS"
                 options={{
-                    tabBarLabel: 'Personas',
+                    tabBarLabel: 'PERSONAS',
                     tabBarLabelStyle: { fontFamily: 'Lilita_One' },
-                    tabBarLabelStyle: { fontFamily: 'Lilita_One' },
+                    tabBarStyle: { backgroundColor: '#FC4A1A' },
+                    tabBarLabelStyle: { fontFamily: 'Lilita_One', color: 'white'},
+                    headerStyle: { backgroundColor: '#FC4A1A' },
                     headerTitleAlign: 'center',
                     headerTitleStyle: {
                         fontFamily: 'DynaPuff',
-                        fontSize: 22, 
+                        fontSize: 30,
+                        color: 'white',
                     },
                     tabBarIcon: () => (
                         <FontAwesome6 name="person-circle-plus" size={24} color="black" />
@@ -85,13 +93,16 @@ const MyTabs = () => {
 
             <Tab.Screen name="PANTALLA DESTINO"
                 options={{
-                    tabBarLabel: 'Destino',
+                    tabBarLabel: 'DESTINOS',
                     tabBarLabelStyle: { fontFamily: 'Lilita_One' },
-                    tabBarLabelStyle: { fontFamily: 'Lilita_One' },
+                    headerStyle: { backgroundColor: '#FC4A1A' },
+                    tabBarStyle: { backgroundColor: '#FC4A1A' },
+                    tabBarLabelStyle: { fontFamily: 'Lilita_One', color: 'white'},
                     headerTitleAlign: 'center',
                     headerTitleStyle: {
                         fontFamily: 'DynaPuff',
-                        fontSize: 22, 
+                        fontSize: 30,
+                        color: 'white',
                     },
                     tabBarIcon: () => (
                         <AntDesign name="enviroment" size={24} color="black" />

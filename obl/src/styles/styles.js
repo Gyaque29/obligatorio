@@ -3,8 +3,7 @@ import { StyleSheet, Platform } from "react-native";
 
 export const colors = {
     ColorFondo1: '#3868A6',
-    ColorFondo2: '#FFCB05',
-    ColorTxt: '#3868A6',
+    ColorFondo2: '#FC4A1A',
 }
 
 export const styles = StyleSheet.create({
