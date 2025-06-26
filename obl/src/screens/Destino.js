@@ -1,9 +1,9 @@
 import { View, Text } from "react-native"
 
-export const Settings = () => {
+export const Destino = () => {
     return (
         <View>
-            <Text>Hola s</Text>
+            <Text>Pantalla Destino</Text>
         </View>
     )
 }
