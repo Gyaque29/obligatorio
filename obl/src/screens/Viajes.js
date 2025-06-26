@@ -3,7 +3,7 @@ import { useFonts } from "expo-font";
 import { styles } from "../styles/styles";
 
 export const Viajes = () => {
-
+    //FUENTES CARGADAS
     let [fontsLoaded] = useFonts({
         Chicle: require('../font/Chicle/Chicle-Regular.ttf'),
 

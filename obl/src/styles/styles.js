@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 15,
         marginTop: Platform.OS === 'android' ? 50 : 0
     },
+    //TITLE COMPONENTE
     texttitleseccion: {
         marginTop: 5,
         padding: 10,
