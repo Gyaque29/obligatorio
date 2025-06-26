@@ -1,9 +1,9 @@
-import { View } from "react-native"
+import { View, Text } from "react-native"
 
 export const Home = () => {
     return (
         <View>
-            <Text>Hola</Text>
+            <Text>Hola mundo</Text>
         </View>
     )
 }
