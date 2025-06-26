@@ -9,10 +9,6 @@ export const Home = () => {
         DynaPuff2: require('../font/DynaPuff/static/DynaPuff_Condensed-Medium.ttf'),
 
         Lilita_One: require('../font/Lilita_One/LilitaOne-Regular.ttf'),
-
-
-        
-
     });
 
     if (!fontsLoaded) return null

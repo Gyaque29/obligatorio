@@ -1,5 +1,6 @@
 import { StyleSheet, Platform } from "react-native";
 
+
 export const colors = {
     ColorFondo1: '#3868A6',
     ColorFondo2: '#FFCB05',
