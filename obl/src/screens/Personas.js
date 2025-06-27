@@ -2,8 +2,19 @@ import { View, Text, TextInput, Pressable } from "react-native";
 import { useFonts } from "expo-font";
 import { styles } from "../styles/styles";
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+//import { useSelector, useDispatch } from 'react-redux';
+//import { addPersona } from '../redux/PersonasSlice';
 
 export const Personas = () => {
+
+    //const personas = useSelector((state) => state.personas.value);
+    //const dispatch = useDispatch();
+
+    const [nombre, setNombre] = useState('');
+    const [telefono, setTelefono] = useState('');
+
     //FUENTES CARGADAS
     let [fontsLoaded] = useFonts({
         Chicle: require('../font/Chicle/Chicle-Regular.ttf'),
@@ -15,8 +26,6 @@ export const Personas = () => {
     });
 
     if (!fontsLoaded) return null
-
-
 
     return (
         <View>
@@ -34,15 +43,20 @@ export const Personas = () => {
             <TextInput
                 style={styles.input}
                 placeholder="Ingrese un nombre"
+                value={nombre}
+                onChangeText={setNombre}
             />
 
             <TextInput
                 style={styles.input}
                 placeholder="Ingrese un telefono"
+                value={telefono}
+                onChangeText={setTelefono}
             />
 
             <Pressable
                 style={styles.btnAgregar}
+                //onPress={()=> dispatch(addPersona)}
             >
                 <Text
                     style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'white' }}>
