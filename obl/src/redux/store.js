@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import PersonasSlice from './PersonasSlice';
+import { viajesReducer } from './viajesSlice';
 
 export default configureStore({
     reducer: {
-        Personas: PersonasReducer,
+        viajes: viajesReducer,
     },
 })
 
