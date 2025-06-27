@@ -1,6 +1,7 @@
 import { View, Text } from "react-native"
 import { useFonts } from "expo-font"
 import { styles } from "../styles/styles";
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 export const Home = () => {
     //FUENTES CARGADAS
@@ -17,7 +18,18 @@ export const Home = () => {
 
     return (
         <View>
-            <Text style={[{ fontFamily: "Lilita_One" }, styles.texttitleseccion]}>Bienvenidos !</Text>
+            <Text
+                style={[{ fontFamily: "Lilita_One" },
+                styles.texttitleseccion]}>
+                Bienvenidos !
+            </Text>
+
+            <MaterialCommunityIcons
+                name="hand-clap"
+                size={24}
+                color="black"
+                style={styles.iconos}
+            />
         </View>
     )
 }

@@ -5,6 +5,7 @@ import { Costos } from "./Costos";
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
 export const Viajes = () => {
+    
     //FUENTES CARGADAS
     let [fontsLoaded] = useFonts({
         Chicle: require('../font/Chicle/Chicle-Regular.ttf'),
@@ -22,7 +23,8 @@ export const Viajes = () => {
         <View>\
             <ScrollView>
                 <Text
-                    style={[{ fontFamily: "Lilita_One" }, styles.texttitleseccion]}>
+                    style={[{ fontFamily: "Lilita_One" }, 
+                    styles.texttitleseccion]}>
                     Agrega un nuevo viaje !
                 </Text>
 
