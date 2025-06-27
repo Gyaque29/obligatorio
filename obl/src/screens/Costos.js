@@ -3,7 +3,7 @@ import { useFonts } from "expo-font";
 import { styles } from "../styles/styles";
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
-export const Destino = () => {
+export const Costos = () => {
 
     //FUENTES CARGADAS
     let [fontsLoaded] = useFonts({
@@ -17,31 +17,28 @@ export const Destino = () => {
 
     if (!fontsLoaded) return null
     return (
-        <View>
+        <View style={styles.containercosto}>
             <Text
                 style={[{ fontFamily: "Lilita_One" },
                 styles.texttitleseccion]}>
-                Ingresa tus destinos !
+                Agrega tus costos !
             </Text>
 
             <FontAwesome6
+                name="money-bill-1"
+                size={24} color="black"
                 style={styles.iconos}
-                name="map-location-dot"
-                size={24} color="black" />
+            />
+
 
             <TextInput
                 style={styles.input}
-                placeholder="Ingrese un nombre"
+                placeholder="Ingrese una descripcion"
             />
 
             <TextInput
                 style={styles.input}
-                placeholder="Ingrese una latitud"
-            />
-
-            <TextInput
-                style={styles.input}
-                placeholder="Ingrese una longitud"
+                placeholder="Ingrese un monto"
             />
 
             <Pressable
@@ -49,7 +46,7 @@ export const Destino = () => {
             >
                 <Text
                     style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'white' }}>
-                    Agregar Destino
+                    Agregar Costo
                 </Text>
             </Pressable>
         </View>

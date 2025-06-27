@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     //ICONO DE PERSONA EN PERSONAS
-    person: {
+    iconos: {
         textAlign: 'center',
         color: colors.ColorFondo2,
         margin: 5,
@@ -57,5 +57,13 @@ export const styles = StyleSheet.create({
         borderRadius: 10,
         padding: 10,
         alignItems: 'center',
-    }
+    },
+    containercosto: {
+        textAlign: 'center',
+        margin: 20,
+        borderRadius: 50,
+        borderColor: colors.ColorFondo1,
+        borderWidth: 2,
+        padding: 5,
+    },
 })

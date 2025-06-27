@@ -26,7 +26,7 @@ export const Personas = () => {
             </Text>
 
             <FontAwesome6
-                style={styles.person}
+                style={styles.iconos}
                 name="person"
                 size={30}
                 color="black" />
