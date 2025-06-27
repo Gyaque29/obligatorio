@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 
-export const counterSlice = createSlice({
+export const PersonasSlice = createSlice({
     name: 'Personas',
     initialState: [],
 

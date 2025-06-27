@@ -21,6 +21,7 @@ export const styles = StyleSheet.create({
         marginTop: 5,
         padding: 10,
         textAlign: 'center',
+        fontSize: 20,
     },
     //INPUT PERSONAS
     input: {
@@ -40,10 +41,14 @@ export const styles = StyleSheet.create({
         textAlign: 'center',
         color: colors.ColorFondo2,
         margin: 5,
-
+    },
+    location: {
+        textAlign: 'center',
+        color: colors.ColorFondo2,
+        margin: 5,
     },
     //PRESEABLE AGREGAR PERSONA
-    btnAgregarPersona: {
+    btnAgregar: {
         marginTop: 10,
         marginRight: 50,
         marginLeft: 50,

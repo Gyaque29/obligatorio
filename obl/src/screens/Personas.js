@@ -42,14 +42,13 @@ export const Personas = () => {
             />
 
             <Pressable
-                style={styles.btnAgregarPersona}
+                style={styles.btnAgregar}
             >
                 <Text
                     style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'white' }}>
                     Agregar Persona
                 </Text>
             </Pressable>
-
         </View>
     )
 }
