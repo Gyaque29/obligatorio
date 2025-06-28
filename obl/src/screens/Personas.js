@@ -11,14 +11,17 @@ export const Personas = () => {
     //ESTADOS PARA FORMULARIO
     const [nombre, setNombre] = useState('');
     const [telefono, setTelefono] = useState('');
+
     //ESTADO PARA CARGAR PERSONAS
     const [personas, setPersonas] = useState([]);
-    //ESTADO PARA CONTROLAR MODAL
+
+    //ESTADO PARA CONTROLAR MODAL Y HACER LA EDICION DEL SELECCIONADO
     const [modal, setModal] = useState(false);
     const [selectNombre, setselectNombre] = useState('');
     const [selectTel, setselectselectTel] = useState('');
     const [selectId, setselectselectId] = useState('');
 
+    //ABRO EL MODAL Y CARGO LA PERSONA SELECCIONADA
     const abrirModalEditar = (persona) => {
         setselectNombre(persona.nombre)
         setselectselectTel(persona.telefono)
@@ -26,6 +29,7 @@ export const Personas = () => {
         setModal(true);
     }
 
+    //EDITO LA PERSONA SELECCIONADA QUE GUARDE EN LOS ESTADOS
     const EditarPersona = (id, nombre, telefono) => {
         editarPersona(id, nombre, telefono);
         setselectNombre('');
@@ -44,7 +48,7 @@ export const Personas = () => {
             })
     }
 
-    //METODO PARA CARGAR PERSONAS
+    //METODO PARA CARGAR PERSONAS AL RENDER
     const CargarPersonas = () => {
         getPersonas().then((data) => {
             setPersonas(data);
@@ -80,7 +84,8 @@ export const Personas = () => {
         <View>
             <ScrollView>
                 <Text
-                    style={[{ fontFamily: "Lilita_One" }, styles.texttitleseccion]}>
+                    style={[{ fontFamily: "Lilita_One" },
+                    styles.texttitleseccion]}>
                     Agrega integrantes al viaje !
                 </Text>
 
@@ -88,7 +93,8 @@ export const Personas = () => {
                     style={styles.iconos}
                     name="person"
                     size={30}
-                    color="black" />
+                    color="black"
+                />
 
                 <TextInput
                     style={styles.input}
@@ -114,6 +120,7 @@ export const Personas = () => {
                     </Text>
                 </Pressable>
 
+                {/*MAPEO EL ESTADO QUE TIENE LAS PERSONAS */}
                 {personas.map((personas) => (
                     <View style={styles.containerlistpersona}>
                         <FontAwesome6
@@ -144,17 +151,20 @@ export const Personas = () => {
                             alignItems: 'center'
                         }}>
 
+                            {/*ICONOS DE EDICION (ABRE MODAL) Y DELETE PERSONAS */}
                             <FontAwesome6
                                 name="edit"
                                 size={24}
                                 color="#3868A6"
-                                onPress={() => abrirModalEditar(personas)} />
+                                onPress={() => abrirModalEditar(personas)}
+                            />
 
                             <MaterialIcons
                                 name="delete"
                                 size={24}
                                 color="#3868A6"
-                                onPress={() => DelPersona(personas.id)} />
+                                onPress={() => DelPersona(personas.id)}
+                            />
                         </View>
 
                         {/*MODAL DE EDITAR PERSONA*/}
@@ -175,6 +185,12 @@ export const Personas = () => {
                                     }}>
                                         Editar Seleccionado
                                     </Text>
+
+                                    <FontAwesome6
+                                        name="edit"
+                                        size={24}
+                                        style={styles.iconos}
+                                    />
 
                                     <TextInput
                                         style={styles.input}
