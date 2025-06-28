@@ -66,4 +66,15 @@ export const styles = StyleSheet.create({
         borderWidth: 2,
         padding: 5,
     },
+    containerlistpersona: {
+        textAlign: 'center',
+        marginTop: 15,
+        marginRight: 50,
+        marginLeft: 50,
+        marginBottom: 15,
+        borderRadius: 10,
+        borderColor: colors.ColorFondo1,
+        borderWidth: 2,
+        padding: 5,
+    },
 })

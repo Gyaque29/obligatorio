@@ -5,9 +5,9 @@ export const viajesSlice = createSlice({
     name: 'viajes',
 
     initialState: {
-        lista_personas: [],
-        //lista_destinos,
-        //lista_costos,
+        //lista_destinos [],
+        //lista_costos [],
+        
     },
 
     reducers: {
