@@ -58,6 +58,7 @@ export const styles = StyleSheet.create({
         padding: 10,
         alignItems: 'center',
     },
+    //CONTENEDOR COSTOS
     containercosto: {
         textAlign: 'center',
         margin: 20,
@@ -66,6 +67,7 @@ export const styles = StyleSheet.create({
         borderWidth: 2,
         padding: 5,
     },
+    //CONTENEDOR LISTA DE PERSONAS
     containerlistpersona: {
         textAlign: 'center',
         marginTop: 15,
@@ -77,4 +79,18 @@ export const styles = StyleSheet.create({
         borderWidth: 2,
         padding: 5,
     },
+    //MODAL EDITAR PERSONAS
+    ModalEditarPersonas: {
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: 'rgba(67, 62, 62, 0.7)',
+        borderRadius: 10,
+        borderColor: colors.ColorFondo1,
+        borderWidth: 2,
+    },
+    containerEdicionP:{
+        textAlign: 'center',
+        margin: 20,
+        padding: 5,
+    }
 })

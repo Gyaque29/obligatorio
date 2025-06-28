@@ -1,12 +1,10 @@
-import { View, Text, TextInput, Pressable, ScrollView, } from "react-native";
+import { View, Text, TextInput, Pressable, ScrollView, Modal } from "react-native";
 import { useFonts } from "expo-font";
 import { styles } from "../styles/styles";
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useEffect, useState } from "react";
-import { addPersona, getPersonas, deletePersona } from '../database/database';
-
-
+import { addPersona, getPersonas, deletePersona, editarPersona } from '../database/database';
 
 export const Personas = () => {
 
@@ -15,6 +13,26 @@ export const Personas = () => {
     const [telefono, setTelefono] = useState('');
     //ESTADO PARA CARGAR PERSONAS
     const [personas, setPersonas] = useState([]);
+    //ESTADO PARA CONTROLAR MODAL
+    const [modal, setModal] = useState(false);
+    const [selectNombre, setselectNombre] = useState('');
+    const [selectTel, setselectselectTel] = useState('');
+    const [selectId, setselectselectId] = useState('');
+
+    const abrirModalEditar = (persona) => {
+        setselectNombre(persona.nombre)
+        setselectselectTel(persona.telefono)
+        setselectselectId(persona.id)
+        setModal(true);
+    }
+
+    const EditarPersona = (id, nombre, telefono) => {
+        editarPersona(id, nombre, telefono);
+        setselectNombre('');
+        setselectselectTel('');
+        setselectselectId('');
+        setModal(false);
+    }
 
     //LLAMO AL METODO Y LE PASO LOS DATOS
     const InsertPersona = () => {
@@ -24,7 +42,6 @@ export const Personas = () => {
                 setTelefono('');
                 CargarPersonas();
             })
-
     }
 
     //METODO PARA CARGAR PERSONAS
@@ -97,7 +114,6 @@ export const Personas = () => {
                     </Text>
                 </Pressable>
 
-
                 {personas.map((personas) => (
                     <View style={styles.containerlistpersona}>
                         <FontAwesome6
@@ -125,12 +141,14 @@ export const Personas = () => {
                         <View style={{
                             flexDirection: 'row',
                             justifyContent: 'center',
-                            alignItems: 'center'}}>
+                            alignItems: 'center'
+                        }}>
 
                             <FontAwesome6
                                 name="edit"
                                 size={24}
-                                color="#3868A6" />
+                                color="#3868A6"
+                                onPress={() => abrirModalEditar(personas)} />
 
                             <MaterialIcons
                                 name="delete"
@@ -138,6 +156,62 @@ export const Personas = () => {
                                 color="#3868A6"
                                 onPress={() => DelPersona(personas.id)} />
                         </View>
+
+                        {/*MODAL DE EDITAR PERSONA*/}
+                        <Modal
+                            visible={modal}
+                            transparent={true}
+                            animationType="slide"
+                            onRequestClose={() => setModal(false)}>
+                            <View style={styles.ModalEditarPersonas}>
+                                <View style={styles.containerEdicionP}>
+                                    <Text style={{
+                                        fontFamily: "Lilita_One",
+                                        fontSize: 25,
+                                        textAlign: 'center',
+                                        fontWeight: 'bold',
+                                        marginTop: 25,
+                                        color: 'white',
+                                    }}>
+                                        Editar Seleccionado
+                                    </Text>
+
+                                    <TextInput
+                                        style={styles.input}
+                                        placeholder="Ingrese un nombre"
+                                        value={selectNombre}
+                                        onChangeText={setselectNombre}
+                                    />
+
+                                    <TextInput
+                                        style={styles.input}
+                                        placeholder="Ingrese un telefono"
+                                        value={selectTel}
+                                        onChangeText={setselectselectTel}
+                                    />
+
+                                    <Pressable
+                                        style={styles.btnAgregar}
+                                        onPress={() => EditarPersona(selectId, selectNombre, selectTel)}
+                                    >
+                                        <Text
+                                            style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'white' }}>
+                                            Enviar Edicion
+                                        </Text>
+                                    </Pressable>
+
+                                    <Pressable
+                                        style={styles.btnAgregar}
+                                        onPress={() => setModal(false)}
+                                    >
+                                        <Text
+                                            style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'black' }}>
+                                            Cancelar Edicion
+                                        </Text>
+                                    </Pressable>
+                                </View>
+                            </View>
+                        </Modal>
                     </View>
                 ))}
             </ScrollView>

@@ -25,18 +25,30 @@ export const getPersonas = async () => {
         const { data } = await supabase.from('integrantes').select('*');
         console.log('Consulta con exito');
         return data;
-    }catch(e){
+    } catch (e) {
         console.log(e);
     }
 }
 
 //METODO DELETE PERSONA
-export const deletePersona = async (id) =>{
+export const deletePersona = async (id) => {
     try {
-        const { data } = await supabase.from('integrantes').delete().eq('id',id);
+        const { data } = await supabase.from('integrantes').delete().eq('id', id);
         console.log('Eliminado con exito');
         return data;
-    }catch(e){
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+//METODO EDITAR PERSONA
+export const editarPersona = async (id, nombre, telefono) => {
+    const persona = { nombre, telefono }
+    try {
+        const { data } = await supabase.from('integrantes').update(persona).eq('id', id);
+        console.log('Editado con exito');
+        return data;
+    } catch (e) {
         console.log(e);
     }
 }
