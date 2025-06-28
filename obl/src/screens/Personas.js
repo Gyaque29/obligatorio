@@ -31,11 +31,15 @@ export const Personas = () => {
 
     //EDITO LA PERSONA SELECCIONADA QUE GUARDE EN LOS ESTADOS
     const EditarPersona = (id, nombre, telefono) => {
-        editarPersona(id, nombre, telefono);
-        setselectNombre('');
-        setselectselectTel('');
-        setselectselectId('');
-        setModal(false);
+        editarPersona(id, nombre, telefono)
+            .then(() => {
+                setselectNombre('');
+                setselectselectTel('');
+                setselectselectId('');
+                CargarPersonas();
+                setModal(false);
+            })
+
     }
 
     //LLAMO AL METODO Y LE PASO LOS DATOS
