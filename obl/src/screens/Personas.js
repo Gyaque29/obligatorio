@@ -126,7 +126,7 @@ export const Personas = () => {
 
                 {/*MAPEO EL ESTADO QUE TIENE LAS PERSONAS */}
                 {personas.map((personas) => (
-                    <View style={styles.containerlistpersona}>
+                    <View style={styles.containerlist}>
                         <FontAwesome6
                             style={styles.iconos}
                             name="contact-card"

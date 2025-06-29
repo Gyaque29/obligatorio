@@ -68,7 +68,7 @@ export const styles = StyleSheet.create({
         padding: 5,
     },
     //CONTENEDOR LISTA DE PERSONAS
-    containerlistpersona: {
+    containerlist: {
         textAlign: 'center',
         marginTop: 15,
         marginRight: 50,

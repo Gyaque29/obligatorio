@@ -11,7 +11,7 @@ export const addPersona = async (nombre, telefono) => {
         const { data } = await supabase
             .from('integrantes')
             .insert({ nombre, telefono });
-        console.log('Cargado correctamente');
+        console.log('Persona cargado correctamente');
         return data;
 
     } catch (e) {
@@ -34,7 +34,7 @@ export const getPersonas = async () => {
 export const deletePersona = async (id) => {
     try {
         const { data } = await supabase.from('integrantes').delete().eq('id', id);
-        console.log('Eliminado con exito');
+        console.log('Persona eliminado con exito');
         return data;
     } catch (e) {
         console.log(e);
@@ -46,17 +46,58 @@ export const editarPersona = async (id, nombre, telefono) => {
     const persona = { nombre, telefono }
     try {
         const { data } = await supabase.from('integrantes').update(persona).eq('id', id);
-        console.log('Editado con exito');
+        console.log('Persona editado con exito');
         return data;
     } catch (e) {
         console.log(e);
     }
 }
 
+//METODO ADD DESTINO
+export const addDestino = async (nombre, lat, long) => {
+    try {
+        const { data } = await supabase
+            .from('destinos')
+            .insert({ nombre, lat, long });
+        console.log('Destino cargado correctamente');
+        return data;
 
-//METODO AGREGAR DESTINO
-export const insertDestino = async (destino) => {
-    const { data } = await supabase.from('destinos').insert(destino);
-    return data;
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+//METODO GET DESTINOS
+export const getDestinos = async () => {
+    try {
+        const { data } = await supabase.from('destinos').select('*');
+        console.log('Consulta con exito');
+        return data;
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+//METODO DELETE DESTINO
+export const deleteDestino = async (id) => {
+    try {
+        const { data } = await supabase.from('destinos').delete().eq('id', id);
+        console.log('Destino eliminado con exito');
+        return data;
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+//METODO EDITAR DESTINO
+export const editDestino = async (id, nombre, lat, long) => {
+    const destino = { nombre, lat, long }
+    try {
+        const { data } = await supabase.from('destinos').update(destino).eq('id', id);
+        console.log('Destino editado con exito');
+        return data;
+    } catch (e) {
+        console.log(e);
+    }
 }
 
