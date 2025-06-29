@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Pressable, Modal } from "react-native";
+import { View, Text, TextInput, Pressable, Modal, ScrollView } from "react-native";
 import { useFonts } from "expo-font";
 import { styles } from "../styles/styles";
 import { useState, useEffect } from "react";
@@ -34,17 +34,17 @@ export const Destino = () => {
     }
 
     //EDITO EL DESTINO SELECCIONADA QUE GUARDE EN LOS ESTADOS
-        const EditarDestino = (id, nombre, lat, long) => {
-            editDestino(id, nombre, lat, long)
-                .then(() => {
-                    setselectNombre('');
-                    setselectLat('');
-                    setselectLong('');
-                    CargarDestinos();
-                    setModal(false);
-                })
-    
-        }
+    const EditarDestino = (id, nombre, lat, long) => {
+        editDestino(id, nombre, lat, long)
+            .then(() => {
+                setselectNombre('');
+                setselectLat('');
+                setselectLong('');
+                CargarDestinos();
+                setModal(false);
+            })
+
+    }
 
     //METODO PARA CARGAR DESTINOS AL RENDER
     const CargarDestinos = () => {
@@ -88,171 +88,173 @@ export const Destino = () => {
     if (!fontsLoaded) return null
     return (
         <View>
-            <Text
-                style={[{ fontFamily: "Lilita_One" },
-                styles.texttitleseccion]}>
-                Ingresa tus destinos !
-            </Text>
-
-            <FontAwesome6
-                style={styles.iconos}
-                name="map-location-dot"
-                size={24} color="black" />
-
-            <TextInput
-                style={styles.input}
-                placeholder="Ingrese un nombre"
-                value={nombre}
-                onChangeText={setNombre}
-            />
-
-            <TextInput
-                style={styles.input}
-                placeholder="Ingrese una latitud"
-                value={lat}
-                onChangeText={setLat}
-            />
-
-            <TextInput
-                style={styles.input}
-                placeholder="Ingrese una longitud"
-                value={long}
-                onChangeText={setLong}
-            />
-
-            <Pressable
-                style={styles.btnAgregar}
-                onPress={() => InsertDestino()}
-            >
+            <ScrollView>
                 <Text
-                    style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'white' }}>
-                    Agregar Destino
+                    style={[{ fontFamily: "Lilita_One" },
+                    styles.texttitleseccion]}>
+                    Ingresa tus destinos !
                 </Text>
-            </Pressable>
 
-            {/*MAPEO EL ESTADO QUE TIENE LOS DESTINOS */}
-            {destinos.map((destinos) => (
-                <View style={styles.containerlist}>
-                    <FontAwesome6
-                        style={styles.iconos}
-                        name="contact-card"
-                        size={24}
-                        color="black"
-                    />
+                <FontAwesome6
+                    style={styles.iconos}
+                    name="map-location-dot"
+                    size={24} color="black" />
+
+                <TextInput
+                    style={styles.input}
+                    placeholder="Ingrese un nombre"
+                    value={nombre}
+                    onChangeText={setNombre}
+                />
+
+                <TextInput
+                    style={styles.input}
+                    placeholder="Ingrese una latitud"
+                    value={lat}
+                    onChangeText={setLat}
+                />
+
+                <TextInput
+                    style={styles.input}
+                    placeholder="Ingrese una longitud"
+                    value={long}
+                    onChangeText={setLong}
+                />
+
+                <Pressable
+                    style={styles.btnAgregar}
+                    onPress={() => InsertDestino()}
+                >
                     <Text
-                        style={{
-                            fontFamily: "Lilita_One",
-                            fontSize: 16,
-                            textAlign: 'center',
-                        }}
-                        key={destinos.id}>
-                        {destinos.nombre}
+                        style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'white' }}>
+                        Agregar Destino
                     </Text>
+                </Pressable>
 
-                    <Text
-                        style={{ fontSize: 16, textAlign: 'center' }}
-                        key={destinos.id}>
-                        {destinos.lat}
-                    </Text>
-
-                    <Text
-                        style={{ fontSize: 16, textAlign: 'center' }}
-                        key={destinos.id}>
-                        {destinos.long}
-                    </Text>
-
-                    <View style={{
-                        flexDirection: 'row',
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                    }}>
-
-                        {/*ICONOS DE EDICION (ABRE MODAL) Y DELETE PERSONAS */}
+                {/*MAPEO EL ESTADO QUE TIENE LOS DESTINOS */}
+                {destinos.map((destinos) => (
+                    <View style={styles.containerlist}>
                         <FontAwesome6
-                            name="edit"
+                            style={styles.iconos}
+                            name="contact-card"
                             size={24}
-                            color="#3868A6"
-                            onPress={() => abrirModalEditar(destinos)}
+                            color="black"
                         />
+                        <Text
+                            style={{
+                                fontFamily: "Lilita_One",
+                                fontSize: 16,
+                                textAlign: 'center',
+                            }}
+                            key={destinos.id}>
+                            {destinos.nombre}
+                        </Text>
 
-                        <MaterialIcons
-                            name="delete"
-                            size={24}
-                            color="#3868A6"
-                            onPress={() => delDestino(destinos.id)}
-                        />
-                    </View>
+                        <Text
+                            style={{ fontSize: 16, textAlign: 'center' }}
+                            key={destinos.id}>
+                            {destinos.lat}
+                        </Text>
 
-                    {/*MODAL DE EDITAR DESTINO*/}
-                    <Modal
-                        visible={modal}
-                        transparent={true}
-                        animationType="slide"
-                        onRequestClose={() => setModal(false)}>
-                        <View style={styles.ModalEditarPersonas}>
-                            <View style={styles.containerEdicionP}>
-                                <Text style={{
-                                    fontFamily: "Lilita_One",
-                                    fontSize: 25,
-                                    textAlign: 'center',
-                                    fontWeight: 'bold',
-                                    marginTop: 25,
-                                    color: 'white',
-                                }}>
-                                    Editar Seleccionado
-                                </Text>
+                        <Text
+                            style={{ fontSize: 16, textAlign: 'center' }}
+                            key={destinos.id}>
+                            {destinos.long}
+                        </Text>
 
-                                <FontAwesome6
-                                    name="edit"
-                                    size={24}
-                                    style={styles.iconos}
-                                />
+                        <View style={{
+                            flexDirection: 'row',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}>
 
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="Ingrese un nombre"
-                                    value={selectNombre}
-                                    onChangeText={setselectNombre}
-                                />
+                            {/*ICONOS DE EDICION (ABRE MODAL) Y DELETE PERSONAS */}
+                            <FontAwesome6
+                                name="edit"
+                                size={24}
+                                color="#3868A6"
+                                onPress={() => abrirModalEditar(destinos)}
+                            />
 
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="Ingrese un telefono"
-                                    value={selectLat}
-                                    onChangeText={setselectLat}
-                                />
-
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="Ingrese un telefono"
-                                    value={selectLong}
-                                    onChangeText={setselectLong}
-                                />
-
-                                <Pressable
-                                    style={styles.btnAgregar}
-                                    onPress={() => EditarDestino(selectId, selectNombre, selectLat, selectLong)}
-                                >
-                                    <Text
-                                        style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'white' }}>
-                                        Enviar Edicion
-                                    </Text>
-                                </Pressable>
-
-                                <Pressable
-                                    style={styles.btnAgregar}
-                                    onPress={() => setModal(false)}
-                                >
-                                    <Text
-                                        style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'black' }}>
-                                        Cancelar Edicion
-                                    </Text>
-                                </Pressable>
-                            </View>
+                            <MaterialIcons
+                                name="delete"
+                                size={24}
+                                color="#3868A6"
+                                onPress={() => delDestino(destinos.id)}
+                            />
                         </View>
-                    </Modal>
-                </View>
-            ))}
+
+                        {/*MODAL DE EDITAR DESTINO*/}
+                        <Modal
+                            visible={modal}
+                            transparent={true}
+                            animationType="slide"
+                            onRequestClose={() => setModal(false)}>
+                            <View style={styles.ModalEditarPersonas}>
+                                <View style={styles.containerEdicionP}>
+                                    <Text style={{
+                                        fontFamily: "Lilita_One",
+                                        fontSize: 25,
+                                        textAlign: 'center',
+                                        fontWeight: 'bold',
+                                        marginTop: 25,
+                                        color: 'white',
+                                    }}>
+                                        Editar Seleccionado
+                                    </Text>
+
+                                    <FontAwesome6
+                                        name="edit"
+                                        size={24}
+                                        style={styles.iconos}
+                                    />
+
+                                    <TextInput
+                                        style={styles.input}
+                                        placeholder="Ingrese un nombre"
+                                        value={selectNombre}
+                                        onChangeText={setselectNombre}
+                                    />
+
+                                    <TextInput
+                                        style={styles.input}
+                                        placeholder="Ingrese un telefono"
+                                        value={selectLat}
+                                        onChangeText={setselectLat}
+                                    />
+
+                                    <TextInput
+                                        style={styles.input}
+                                        placeholder="Ingrese un telefono"
+                                        value={selectLong}
+                                        onChangeText={setselectLong}
+                                    />
+
+                                    <Pressable
+                                        style={styles.btnAgregar}
+                                        onPress={() => EditarDestino(selectId, selectNombre, selectLat, selectLong)}
+                                    >
+                                        <Text
+                                            style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'white' }}>
+                                            Enviar Edicion
+                                        </Text>
+                                    </Pressable>
+
+                                    <Pressable
+                                        style={styles.btnAgregar}
+                                        onPress={() => setModal(false)}
+                                    >
+                                        <Text
+                                            style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'black' }}>
+                                            Cancelar Edicion
+                                        </Text>
+                                    </Pressable>
+                                </View>
+                            </View>
+                        </Modal>
+                    </View>
+                ))}
+            </ScrollView>
         </View>
     )
 }
