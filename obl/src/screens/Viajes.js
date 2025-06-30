@@ -20,7 +20,7 @@ export const Viajes = () => {
 
 
     return (
-        <View>\
+        <View>
             <ScrollView>
                 <Text
                     style={[{ fontFamily: "Lilita_One" }, 
