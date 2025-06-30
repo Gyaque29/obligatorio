@@ -5,6 +5,8 @@ import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useEffect, useState } from "react";
 import { addPersona, getPersonas, deletePersona, editarPersona } from '../database/database';
+import { FormPersonas } from "./FormPersonas";
+import { ListaPersonas } from "./ListaPersonas";
 
 export const Personas = () => {
 
@@ -18,14 +20,14 @@ export const Personas = () => {
     //ESTADO PARA CONTROLAR MODAL Y HACER LA EDICION DEL SELECCIONADO
     const [modal, setModal] = useState(false);
     const [selectNombre, setselectNombre] = useState('');
-    const [selectTel, setselectselectTel] = useState('');
-    const [selectId, setselectselectId] = useState('');
+    const [selectTel, setselectTel] = useState('');
+    const [selectId, setselectId] = useState('');
 
     //ABRO EL MODAL Y CARGO LA PERSONA SELECCIONADA
     const abrirModalEditar = (persona) => {
         setselectNombre(persona.nombre)
-        setselectselectTel(persona.telefono)
-        setselectselectId(persona.id)
+        setselectTel(persona.telefono)
+        setselectId(persona.id)
         setModal(true);
     }
 
@@ -34,8 +36,8 @@ export const Personas = () => {
         editarPersona(id, nombre, telefono)
             .then(() => {
                 setselectNombre('');
-                setselectselectTel('');
-                setselectselectId('');
+                setselectTel('');
+                setselectId('');
                 CargarPersonas();
                 setModal(false);
             })
@@ -87,153 +89,28 @@ export const Personas = () => {
     return (
         <View>
             <ScrollView>
-                <Text
-                    style={[{ fontFamily: "Lilita_One" },
-                    styles.texttitleseccion]}>
-                    Agrega integrantes al viaje !
-                </Text>
-
-                <FontAwesome6
-                    style={styles.iconos}
-                    name="person"
-                    size={30}
-                    color="black"
+                <FormPersonas
+                    nombre={nombre}
+                    setNombre={setNombre}
+                    telefono={telefono}
+                    setTelefono={setTelefono}
+                    onAgregar={InsertPersona}
                 />
 
-                <TextInput
-                    style={styles.input}
-                    placeholder="Ingrese un nombre"
-                    value={nombre}
-                    onChangeText={setNombre}
-                />
-
-                <TextInput
-                    style={styles.input}
-                    placeholder="Ingrese un telefono"
-                    value={telefono}
-                    onChangeText={setTelefono}
-                />
-
-                <Pressable
-                    style={styles.btnAgregar}
-                    onPress={() => InsertPersona()}
-                >
-                    <Text
-                        style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'white' }}>
-                        Agregar Persona
-                    </Text>
-                </Pressable>
-
-                {/*MAPEO EL ESTADO QUE TIENE LAS PERSONAS */}
-                {personas.map((personas) => (
-                    <View style={styles.containerlist}>
-                        <FontAwesome6
-                            style={styles.iconos}
-                            name="contact-card"
-                            size={24}
-                            color="black"
-                        />
-                        <Text
-                            style={{
-                                fontFamily: "Lilita_One",
-                                fontSize: 16,
-                                textAlign: 'center',
-                            }}
-                            key={personas.id}>
-                            {personas.nombre}
-                        </Text>
-
-                        <Text
-                            style={{ fontSize: 16, textAlign: 'center' }}
-                            key={personas.id}>
-                            {personas.telefono}
-                        </Text>
-
-                        <View style={{
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                            alignItems: 'center'
-                        }}>
-
-                            {/*ICONOS DE EDICION (ABRE MODAL) Y DELETE PERSONAS */}
-                            <FontAwesome6
-                                name="edit"
-                                size={24}
-                                color="#3868A6"
-                                onPress={() => abrirModalEditar(personas)}
-                            />
-
-                            <MaterialIcons
-                                name="delete"
-                                size={24}
-                                color="#3868A6"
-                                onPress={() => DelPersona(personas.id)}
-                            />
-                        </View>
-
-                        {/*MODAL DE EDITAR PERSONA*/}
-                        <Modal
-                            visible={modal}
-                            transparent={true}
-                            animationType="slide"
-                            onRequestClose={() => setModal(false)}>
-                            <View style={styles.ModalEditarPersonas}>
-                                <View style={styles.containerEdicionP}>
-                                    <Text style={{
-                                        fontFamily: "Lilita_One",
-                                        fontSize: 25,
-                                        textAlign: 'center',
-                                        fontWeight: 'bold',
-                                        marginTop: 25,
-                                        color: 'white',
-                                    }}>
-                                        Editar Seleccionado
-                                    </Text>
-
-                                    <FontAwesome6
-                                        name="edit"
-                                        size={24}
-                                        style={styles.iconos}
-                                    />
-
-                                    <TextInput
-                                        style={styles.input}
-                                        placeholder="Ingrese un nombre"
-                                        value={selectNombre}
-                                        onChangeText={setselectNombre}
-                                    />
-
-                                    <TextInput
-                                        style={styles.input}
-                                        placeholder="Ingrese un telefono"
-                                        value={selectTel}
-                                        onChangeText={setselectselectTel}
-                                    />
-
-                                    <Pressable
-                                        style={styles.btnAgregar}
-                                        onPress={() => EditarPersona(selectId, selectNombre, selectTel)}
-                                    >
-                                        <Text
-                                            style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'white' }}>
-                                            Enviar Edicion
-                                        </Text>
-                                    </Pressable>
-
-                                    <Pressable
-                                        style={styles.btnAgregar}
-                                        onPress={() => setModal(false)}
-                                    >
-                                        <Text
-                                            style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'black' }}>
-                                            Cancelar Edicion
-                                        </Text>
-                                    </Pressable>
-                                </View>
-                            </View>
-                        </Modal>
-                    </View>
-                ))}
+                <ListaPersonas 
+                    personas={personas}
+                    abrirModalEditar={abrirModalEditar}
+                    DelPersona={DelPersona}
+                    modal={modal}
+                    setModal={setModal}
+                    selectNombre={selectNombre}
+                    setselectNombre={setselectNombre}
+                    selectTel={selectTel}
+                    setselectTel={setselectTel}
+                    selectId={selectId}
+                    setselectId={setselectId}
+                    editarPersona={EditarPersona}
+                />           
             </ScrollView>
         </View>
     )

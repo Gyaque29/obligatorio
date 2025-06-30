@@ -53,6 +53,8 @@ export const editarPersona = async (id, nombre, telefono) => {
     }
 }
 
+
+
 //METODO ADD DESTINO
 export const addDestino = async (nombre, lat, long) => {
     try {
