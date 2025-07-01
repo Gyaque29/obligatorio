@@ -58,6 +58,26 @@ export const styles = StyleSheet.create({
         padding: 10,
         alignItems: 'center',
     },
+    //BTN FECHAS
+    btnFechas: {
+        marginTop: 5,
+        marginRight: 25,
+        marginLeft: 25,
+        height: 40,
+        backgroundColor: colors.ColorFondo2,
+        borderRadius: 10,
+        padding: 10,
+        alignItems: 'center',
+    },
+    //CONTENEDOR FORM VIAJES
+    containerformViajes: {
+        textAlign: 'center',
+        margin: 20,
+        borderRadius: 50,
+        borderColor: colors.ColorFondo1,
+        borderWidth: 2,
+        padding: 5,
+    },
     //CONTENEDOR COSTOS
     containercosto: {
         textAlign: 'center',
