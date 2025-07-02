@@ -30,21 +30,23 @@ export const SeleccionarIntegrantes = () => {
 
   return (
     <>
-      <Pressable
-        style={styles.btnEstandar}
-        onPress={abrirModal}
-      >
-        <Text
-          style={{
-            fontFamily: "Lilita_One",
-            fontSize: 16,
-            color: 'white'
-          }}
+      <View style={styles.containerform}>
+        <Pressable
+          style={styles.btnEstandar}
+          onPress={abrirModal}
         >
-          Seleccionar Integrantes
-        </Text>
-      </Pressable>
-
+          <Text
+            style={{
+              fontFamily: "Lilita_One",
+              fontSize: 16,
+              color: 'white'
+            }}
+          >
+            Agrega Integrantes
+          </Text>
+        </Pressable>
+      </View>
+      
       <Modal
         visible={modal}
         transparent={true}
@@ -162,7 +164,7 @@ export const SeleccionarIntegrantes = () => {
                   color: 'black'
                 }}
               >
-                Cancelar Seleccion
+                Cerrar Seleccion
               </Text>
             </Pressable>
           </View>

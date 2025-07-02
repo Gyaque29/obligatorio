@@ -70,7 +70,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
     //CONTENEDOR FORM VIAJES
-    containerformViajes: {
+    containerform: {
         textAlign: 'center',
         margin: 20,
         borderRadius: 50,

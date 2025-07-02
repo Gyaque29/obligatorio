@@ -15,7 +15,7 @@ export const FormViaje = ({
     const [mostrarCalendario2, setMostrarCalendario2] = useState(false);
 
     return (
-        <View style={styles.containerformViajes}>
+        <View style={styles.containerform}>
             <Text
                 style={[{ fontFamily: "Lilita_One" },
                 styles.txttitle]}
