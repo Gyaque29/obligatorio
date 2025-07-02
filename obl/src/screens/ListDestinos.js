@@ -29,7 +29,7 @@ export const ListaDestinos = ({
                     <FontAwesome6
                         style={styles.iconos}
                         name="contact-card"
-                        size={24}
+                        size={30}
                         color="black"
                     />
 
@@ -71,14 +71,14 @@ export const ListaDestinos = ({
 
                         <FontAwesome6
                             name="edit"
-                            size={24}
+                            size={30}
                             color="#3868A6"
                             onPress={() => abrirModalEditar(destino)}
                         />
 
                         <MaterialIcons
                             name="delete"
-                            size={24}
+                            size={30}
                             color="#3868A6"
                             onPress={() => delDestino(destino.id)}
                         />
@@ -94,10 +94,10 @@ export const ListaDestinos = ({
                 onRequestClose={() => setModal(false)}
             >
                 <View
-                    style={styles.ModalEditarPersonas}
+                    style={styles.ModalEditar}
                 >
                     <View
-                        style={styles.containerEdicionP}
+                        style={styles.containerEdicion}
                     >
                         <Text style={{
                             fontFamily: "Lilita_One",
@@ -112,7 +112,7 @@ export const ListaDestinos = ({
 
                         <FontAwesome6
                             name="edit"
-                            size={24}
+                            size={30}
                             style={styles.iconos}
                         />
 

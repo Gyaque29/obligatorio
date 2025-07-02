@@ -1,5 +1,4 @@
 import { Calendar } from "./Calendar";
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { useState } from "react";
 import { View, Text, TextInput, Pressable } from "react-native";
 import { styles } from "../styles/styles";
@@ -17,11 +16,12 @@ export const FormViaje = ({
 
     return (
         <View style={styles.containerformViajes}>
-            <FontAwesome6
-                style={styles.iconos}
-                name="plane-departure"
-                size={24} color="black"
-            />
+            <Text
+                style={[{ fontFamily: "Lilita_One" },
+                styles.txttitle]}
+            >
+                Crear viaje !
+            </Text>
 
             <TextInput
                 style={styles.input}
@@ -30,14 +30,21 @@ export const FormViaje = ({
                 onChangeText={setNombre}
             />
 
-            <View style={{ padding: 20 }}>
+            <View
+                style={{ padding: 20 }}
+            >
                 {/* BOTON QUE MUESTRA LA FECHA INICIO SELECCIONADA */}
                 <Pressable
-
                     onPress={() => setMostrarCalendario(!mostrarCalendario)}
                     style={styles.btnFechas}
                 >
-                    <Text style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'white' }}>
+                    <Text
+                        style={{
+                            fontFamily: "Lilita_One",
+                            fontSize: 16,
+                            color: 'white'
+                        }}
+                    >
                         Fecha Inicio: {fechaInicio ? fechaInicio.toLocaleDateString() : 'Seleccionar'}
                     </Text>
                 </Pressable>
@@ -58,7 +65,13 @@ export const FormViaje = ({
                     onPress={() => setMostrarCalendario2(!mostrarCalendario2)}
                     style={styles.btnFechas}
                 >
-                    <Text style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'white' }}>
+                    <Text
+                        style={{
+                            fontFamily: "Lilita_One",
+                            fontSize: 16,
+                            color: 'white'
+                        }}
+                    >
                         Fecha Fin: {fechaFin ? fechaFin.toLocaleDateString() : 'Seleccionar'}
                     </Text>
                 </Pressable>

@@ -24,22 +24,25 @@ export const ListaPersonas = ({
                     <FontAwesome6
                         style={styles.iconos}
                         name="contact-card"
-                        size={24}
+                        size={30}
                         color="black"
                     />
+
                     <Text
                         style={{
                             fontFamily: "Lilita_One",
                             fontSize: 16,
                             textAlign: 'center',
                         }}
-                        key={personas.id}>
+                        key={personas.id}
+                    >
                         {personas.nombre}
                     </Text>
 
                     <Text
                         style={{ fontSize: 16, textAlign: 'center' }}
-                        key={personas.id}>
+                        key={personas.id}
+                    >
                         {personas.telefono}
                     </Text>
 
@@ -52,14 +55,14 @@ export const ListaPersonas = ({
                         {/*ICONOS DE EDICION (ABRE MODAL) Y DELETE PERSONAS */}
                         <FontAwesome6
                             name="edit"
-                            size={24}
+                            size={30}
                             color="#3868A6"
                             onPress={() => abrirModalEditar(personas)}
                         />
 
                         <MaterialIcons
                             name="delete"
-                            size={24}
+                            size={30}
                             color="#3868A6"
                             onPress={() => DelPersona(personas.id)}
                         />
@@ -72,23 +75,29 @@ export const ListaPersonas = ({
                 visible={modal}
                 transparent={true}
                 animationType="slide"
-                onRequestClose={() => setModal(false)}>
-                <View style={styles.ModalEditarPersonas}>
-                    <View style={styles.containerEdicionP}>
+                onRequestClose={() => setModal(false)}
+            >
+                    
+                <View 
+                    style={styles.ModalEditar}
+                >
+                    <View 
+                        style={styles.containerEdicion}
+                    >
                         <Text style={{
                             fontFamily: "Lilita_One",
                             fontSize: 25,
                             textAlign: 'center',
                             fontWeight: 'bold',
                             marginTop: 25,
-                            color: 'white',
+                            color: 'white',                           
                         }}>
-                            Editar Seleccionado
+                            Editar Persona Seleccionado
                         </Text>
 
                         <FontAwesome6
                             name="edit"
-                            size={24}
+                            size={30}
                             style={styles.iconos}
                         />
 

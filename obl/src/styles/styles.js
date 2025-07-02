@@ -113,7 +113,7 @@ export const styles = StyleSheet.create({
         padding: 5,
     },
     //MODAL EDITAR PERSONAS
-    ModalEditarPersonas: {
+    ModalEditar: {
         flex: 1,
         alignItems: 'center',
         backgroundColor: 'rgba(67, 62, 62, 0.7)',
@@ -121,7 +121,7 @@ export const styles = StyleSheet.create({
         borderColor: colors.ColorFondo1,
         borderWidth: 2,
     },
-    containerEdicionP:{
+    containerEdicion:{
         textAlign: 'center',
         margin: 20,
         padding: 5,

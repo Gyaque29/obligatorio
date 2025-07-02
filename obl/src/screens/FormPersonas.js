@@ -1,5 +1,5 @@
 import { View, Text, TextInput, Pressable } from "react-native";
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+
 import { styles } from "../styles/styles";
 import { useFonts } from "expo-font";
 
@@ -23,13 +23,6 @@ export const FormPersonas = ({
     if (!fontsLoaded) return null
     return (
         <View>
-            <FontAwesome6
-                style={styles.iconos}
-                name="person"
-                size={30}
-                color="black"
-            />
-
             <TextInput
                 style={styles.input}
                 placeholder="Ingrese un nombre"

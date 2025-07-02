@@ -30,8 +30,17 @@ export const SeleccionarIntegrantes = () => {
 
   return (
     <>
-      <Pressable style={styles.btnAgregar} onPress={abrirModal}>
-        <Text style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'white' }}>
+      <Pressable
+        style={styles.btnEstandar}
+        onPress={abrirModal}
+      >
+        <Text
+          style={{
+            fontFamily: "Lilita_One",
+            fontSize: 16,
+            color: 'white'
+          }}
+        >
           Seleccionar Integrantes
         </Text>
       </Pressable>
@@ -43,45 +52,98 @@ export const SeleccionarIntegrantes = () => {
         onRequestClose={() => setModal(false)}
       >
         <ScrollView>
-          <View style={styles.ModalEditarPersonas}>
-            <Text style={{ fontFamily: "Lilita_One", fontSize: 26, color: 'white', margin: 15 }}>
+          <View
+            style={styles.ModalEditar}
+          >
+            <Text
+              style={{
+                fontFamily: "Lilita_One",
+                fontSize: 26,
+                color: 'white',
+                margin: 15
+              }}
+            >
               Integrantes Seleccionados !
             </Text>
+
             {seleccionados.map(p => (
-              <View key={p.id} style={styles.containerlistchek}>
-                <Text style={{ fontFamily: "Lilita_One", fontSize: 16, textAlign: 'center' }}>
+              <View
+                key={p.id}
+                style={styles.containerlistchek}
+              >
+                <Text
+                  style={{
+                    fontFamily: "Lilita_One",
+                    fontSize: 16,
+                    textAlign: 'center'
+                  }}
+                >
                   {p.nombre}
                 </Text>
-                <Text style={{ fontSize: 16, textAlign: 'center' }}>
+
+                <Text
+                  style={{
+                    fontSize: 16,
+                    textAlign: 'center'
+                  }}
+                >
                   {p.telefono}
                 </Text>
+
                 <FontAwesome
                   name="remove"
-                  size={24}
-                  color="black"
+                  size={30}
                   style={styles.iconos}
                   onPress={() => dispatch(delPersona(p))}
                 />
               </View>
             ))}
 
-            <Text style={{ fontFamily: "Lilita_One", fontSize: 26, color: 'white', margin: 15 }}>
+            <Text
+              style={{
+                fontFamily: "Lilita_One",
+                fontSize: 26,
+                color: 'white',
+                margin: 15
+              }}
+            >
               Seleccionar Integrantes !
             </Text>
 
             {personas.map(persona => (
-              <View key={persona.id} style={styles.containerlistchek}>
-                <Text style={{ fontFamily: "Lilita_One", fontSize: 16, textAlign: 'center' }}>
+              <View
+                key={persona.id}
+                style={styles.containerlistchek}
+              >
+                <Text
+                  style={{
+                    fontFamily: "Lilita_One",
+                    fontSize: 16,
+                    textAlign: 'center'
+                  }}
+                >
                   {persona.nombre}
                 </Text>
-                <Text style={{ fontSize: 16, textAlign: 'center' }}>
+
+                <Text
+                  style={{
+                    fontSize: 16,
+                    textAlign: 'center'
+                  }}
+                >
                   {persona.telefono}
                 </Text>
-                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                  }}
+                >
                   <MaterialIcons
                     name="add"
                     size={30}
-                    color="black"
                     style={styles.iconos}
                     onPress={() => dispatch(addPersona(persona))}
                   />
@@ -90,10 +152,16 @@ export const SeleccionarIntegrantes = () => {
             ))}
 
             <Pressable
-              style={styles.btnAgregar}
+              style={styles.btnEstandar}
               onPress={() => setModal(false)}
             >
-              <Text style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'black' }}>
+              <Text
+                style={{
+                  fontFamily: "Lilita_One",
+                  fontSize: 16,
+                  color: 'black'
+                }}
+              >
                 Cancelar Seleccion
               </Text>
             </Pressable>

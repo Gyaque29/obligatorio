@@ -1,12 +1,11 @@
 import { View, Text, TextInput, Pressable, ScrollView, Modal } from "react-native";
 import { useFonts } from "expo-font";
 import { styles } from "../styles/styles";
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useEffect, useState } from "react";
 import { addPersona, getPersonas, deletePersona, editarPersona } from '../database/database';
 import { FormPersonas } from "./FormPersonas";
 import { ListaPersonas } from "./ListaPersonas";
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
 export const Personas = () => {
 
@@ -95,6 +94,13 @@ export const Personas = () => {
                     styles.txttitle]}>
                     Agrega integrantes al viaje !
                 </Text>
+
+                <FontAwesome6
+                    style={styles.iconos}
+                    name="person"
+                    size={30}
+                    color="black"
+                />
 
                 <FormPersonas
                     nombre={nombre}

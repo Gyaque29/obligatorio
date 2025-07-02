@@ -1,4 +1,5 @@
 import { View, Text, Pressable, ScrollView } from "react-native";
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { useFonts } from "expo-font";
 import { styles } from "../styles/styles";
 import { useState } from "react";
@@ -37,6 +38,13 @@ export const Viajes = () => {
                     Crea un nuevo viaje !
                 </Text>
 
+                <FontAwesome6
+                    style={styles.iconos}
+                    name="plane-departure"
+                    size={30}
+                    color="black"
+                />
+
                 <FormViaje
                     nombre={nombre}
                     setNombre={setNombre}
@@ -49,7 +57,7 @@ export const Viajes = () => {
                 <SeleccionarIntegrantes />
 
                 <Pressable
-                    style={styles.btnAgregar}
+                    style={styles.btnEstandar}
                 >
                     <Text
                         style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'white' }}>
