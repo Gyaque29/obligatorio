@@ -99,6 +99,19 @@ export const styles = StyleSheet.create({
         borderWidth: 2,
         padding: 5,
     },
+    containerlistchek:{
+        textAlign: 'center',
+        marginTop: 5,
+        marginRight: 50,
+        marginLeft: 50,
+        width: 150,
+        backgroundColor: 'white',
+        marginBottom: 15,
+        borderRadius: 10,
+        borderColor: colors.ColorFondo1,
+        borderWidth: 2,
+        padding: 5,
+    },
     //MODAL EDITAR PERSONAS
     ModalEditarPersonas: {
         flex: 1,

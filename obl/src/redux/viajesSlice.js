@@ -3,19 +3,23 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const viajesSlice = createSlice({
     name: 'viajes',
-
     initialState: {
-        //lista_destinos [],
-        //lista_costos [],
+        integrantes: [],
         
     },
 
     reducers: {
-        addPersona: (state) => {
-           // state.value += 1;
+        addPersona: (state, action) => {
+            const persona = action.payload;
+            state.integrantes.push(persona);
         },
+
+        delPersona: (state, action) => {
+            const persona = action.payload;
+            state.integrantes = state.integrantes.filter(p => p.id !== persona.id);
+        }
     }
 })
 
-export const { addPersona } = viajesSlice.actions;
+export const { addPersona, delPersona } = viajesSlice.actions;
 export default viajesSlice.reducer;

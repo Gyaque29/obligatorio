@@ -1,13 +1,13 @@
-import { View, Text, TextInput, Pressable, ScrollView } from "react-native";
+import { View, Text, Pressable, ScrollView } from "react-native";
 import { useFonts } from "expo-font";
 import { styles } from "../styles/styles";
-import { Costos } from "./Costos";
-
-
 import { useState } from "react";
 import { FormViaje } from "./FormViaje";
 
+import { SeleccionarIntegrantes } from "./SeleccionIntegrantes";
+
 export const Viajes = () => {
+
 
     //ESTADO PARA MANEJAR NOMBRE VIAJE
     const [nombre, setNombre] = useState('');
@@ -31,8 +31,8 @@ export const Viajes = () => {
     return (
         <View>
             <ScrollView>
-                
-                <FormViaje 
+
+                <FormViaje
                     nombre={nombre}
                     setNombre={setNombre}
                     fechaInicio={fechaInicio}
@@ -41,7 +41,7 @@ export const Viajes = () => {
                     setFechaFin={setFechaFin}
                 />
 
-                
+                <SeleccionarIntegrantes />
 
                 <Pressable
                     style={styles.btnAgregar}
@@ -51,6 +51,7 @@ export const Viajes = () => {
                         Agregar Viaje
                     </Text>
                 </Pressable>
+
             </ScrollView>
         </View>
     )

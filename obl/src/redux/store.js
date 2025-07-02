@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { viajesReducer } from './viajesSlice';
+import  viajesReducer  from './viajesSlice';
 
 export default configureStore({
     reducer: {
