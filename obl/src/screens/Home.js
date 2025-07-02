@@ -20,7 +20,7 @@ export const Home = () => {
         <View>
             <Text
                 style={[{ fontFamily: "Lilita_One" },
-                styles.texttitleseccion]}>
+                styles.txttitle]}>
                 Bienvenidos !
             </Text>
 

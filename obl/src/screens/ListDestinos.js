@@ -21,7 +21,11 @@ export const ListaDestinos = ({
     return (
         <>
             {destinos.map((destino) => (
-                <View key={destino.id} style={styles.containerlist}>
+                <View
+                    key={destino.id}
+                    style={styles.containerlist}
+                >
+
                     <FontAwesome6
                         style={styles.iconos}
                         name="contact-card"
@@ -29,23 +33,49 @@ export const ListaDestinos = ({
                         color="black"
                     />
 
-                    <Text style={{ fontFamily: "Lilita_One", fontSize: 16, textAlign: 'center' }}>
+                    <Text
+                        style={{
+                            fontFamily: "Lilita_One",
+                            fontSize: 16,
+                            textAlign: 'center'
+                        }}
+                    >
                         {destino.nombre}
                     </Text>
-                    <Text style={{ fontSize: 16, textAlign: 'center' }}>
+
+                    <Text
+                        style={{
+                            fontSize: 16,
+                            textAlign: 'center'
+                        }}
+                    >
                         {destino.lat}
                     </Text>
-                    <Text style={{ fontSize: 16, textAlign: 'center' }}>
+
+                    <Text
+                        style={{
+                            fontSize: 16,
+                            textAlign: 'center'
+                        }}
+                    >
                         {destino.long}
                     </Text>
 
-                    <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}
+                    >
+
                         <FontAwesome6
                             name="edit"
                             size={24}
                             color="#3868A6"
                             onPress={() => abrirModalEditar(destino)}
                         />
+
                         <MaterialIcons
                             name="delete"
                             size={24}
@@ -63,8 +93,12 @@ export const ListaDestinos = ({
                 animationType="slide"
                 onRequestClose={() => setModal(false)}
             >
-                <View style={styles.ModalEditarPersonas}>
-                    <View style={styles.containerEdicionP}>
+                <View
+                    style={styles.ModalEditarPersonas}
+                >
+                    <View
+                        style={styles.containerEdicionP}
+                    >
                         <Text style={{
                             fontFamily: "Lilita_One",
                             fontSize: 25,
@@ -76,7 +110,11 @@ export const ListaDestinos = ({
                             Editar Seleccionado
                         </Text>
 
-                        <FontAwesome6 name="edit" size={24} style={styles.iconos} />
+                        <FontAwesome6
+                            name="edit"
+                            size={24}
+                            style={styles.iconos}
+                        />
 
                         <TextInput
                             style={styles.input}
@@ -84,12 +122,14 @@ export const ListaDestinos = ({
                             value={selectNombre}
                             onChangeText={setselectNombre}
                         />
+
                         <TextInput
                             style={styles.input}
                             placeholder="Ingrese una latitud"
                             value={selectLat}
                             onChangeText={setselectLat}
                         />
+
                         <TextInput
                             style={styles.input}
                             placeholder="Ingrese una longitud"
@@ -98,7 +138,7 @@ export const ListaDestinos = ({
                         />
 
                         <Pressable
-                            style={styles.btnAgregar}
+                            style={styles.btnEstandar}
                             onPress={() => EditarDestino(selectId, selectNombre, selectLat, selectLong)}
                         >
                             <Text style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'white' }}>
@@ -107,7 +147,7 @@ export const ListaDestinos = ({
                         </Pressable>
 
                         <Pressable
-                            style={styles.btnAgregar}
+                            style={styles.btnEstandar}
                             onPress={() => setModal(false)}
                         >
                             <Text style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'black' }}>

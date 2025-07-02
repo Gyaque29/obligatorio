@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
         marginTop: Platform.OS === 'android' ? 50 : 0
     },
     //TITLE COMPONENTE
-    texttitleseccion: {
+    txttitle: {
         marginTop: 5,
         padding: 10,
         textAlign: 'center',
@@ -48,7 +48,7 @@ export const styles = StyleSheet.create({
         margin: 5,
     },
     //PRESEABLE AGREGAR PERSONA
-    btnAgregar: {
+    btnEstandar: {
         marginTop: 10,
         marginRight: 50,
         marginLeft: 50,

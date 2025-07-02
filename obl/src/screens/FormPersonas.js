@@ -23,12 +23,6 @@ export const FormPersonas = ({
     if (!fontsLoaded) return null
     return (
         <View>
-            <Text
-                style={[{ fontFamily: "Lilita_One" },
-                styles.texttitleseccion]}>
-                Agrega integrantes al viaje !
-            </Text>
-
             <FontAwesome6
                 style={styles.iconos}
                 name="person"
@@ -51,7 +45,7 @@ export const FormPersonas = ({
             />
 
             <Pressable
-                style={styles.btnAgregar}
+                style={styles.btnEstandar}
                 onPress={() => onAgregar()}
             >
                 <Text

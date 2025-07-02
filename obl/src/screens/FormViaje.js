@@ -17,12 +17,6 @@ export const FormViaje = ({
 
     return (
         <View style={styles.containerformViajes}>
-            <Text
-                style={[{ fontFamily: "Lilita_One" },
-                styles.texttitleseccion]}>
-                Crea un nuevo viaje !
-            </Text>
-
             <FontAwesome6
                 style={styles.iconos}
                 name="plane-departure"

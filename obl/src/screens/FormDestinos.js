@@ -23,16 +23,12 @@ export const FormDestino = ({
 
     return (
         <View>
-            <Text
-                style={[{ fontFamily: "Lilita_One" },
-                styles.texttitleseccion]}>
-                Ingresa tus destinos !
-            </Text>
-
-            <FontAwesome6
-                style={styles.iconos}
-                name="map-location-dot"
-                size={24} color="black" />
+            <FontAwesome6 
+                style={styles.iconos} 
+                name="map-location-dot" 
+                size={30} 
+                color="black" 
+            />
 
             <TextInput
                 style={styles.input}
@@ -56,11 +52,12 @@ export const FormDestino = ({
             />
 
             <Pressable
-                style={styles.btnAgregar}
+                style={styles.btnEstandar}
                 onPress={() => onAgregar()}
             >
                 <Text
-                    style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'white' }}>
+                    style={{ fontFamily: "Lilita_One", 
+                    fontSize: 16, color: 'white' }}>
                     Agregar Destino
                 </Text>
             </Pressable>

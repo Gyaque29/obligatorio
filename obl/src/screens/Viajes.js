@@ -31,6 +31,11 @@ export const Viajes = () => {
     return (
         <View>
             <ScrollView>
+                <Text
+                    style={[{ fontFamily: "Lilita_One" },
+                    styles.txttitle]}>
+                    Crea un nuevo viaje !
+                </Text>
 
                 <FormViaje
                     nombre={nombre}

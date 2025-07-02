@@ -89,6 +89,13 @@ export const Personas = () => {
     return (
         <View>
             <ScrollView>
+
+                <Text
+                    style={[{ fontFamily: "Lilita_One" },
+                    styles.txttitle]}>
+                    Agrega integrantes al viaje !
+                </Text>
+
                 <FormPersonas
                     nombre={nombre}
                     setNombre={setNombre}
@@ -97,7 +104,7 @@ export const Personas = () => {
                     onAgregar={InsertPersona}
                 />
 
-                <ListaPersonas 
+                <ListaPersonas
                     personas={personas}
                     abrirModalEditar={abrirModalEditar}
                     DelPersona={DelPersona}
@@ -110,7 +117,7 @@ export const Personas = () => {
                     selectId={selectId}
                     setselectId={setselectId}
                     editarPersona={EditarPersona}
-                />           
+                />
             </ScrollView>
         </View>
     )

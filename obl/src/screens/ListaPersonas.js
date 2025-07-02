@@ -107,7 +107,7 @@ export const ListaPersonas = ({
                         />
 
                         <Pressable
-                            style={styles.btnAgregar}
+                            style={styles.btnEstandar}
                             onPress={() => editarPersona(selectId, selectNombre, selectTel)}
                         >
                             <Text
@@ -117,7 +117,7 @@ export const ListaPersonas = ({
                         </Pressable>
 
                         <Pressable
-                            style={styles.btnAgregar}
+                            style={styles.btnEstandar}
                             onPress={() => setModal(false)}
                         >
                             <Text

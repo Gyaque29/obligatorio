@@ -1,9 +1,10 @@
-import { View, ScrollView } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import { useFonts } from "expo-font";
 import { useState, useEffect } from "react";
 import { addDestino, getDestinos, deleteDestino, editDestino } from "../database/database";
 import { FormDestino } from "./FormDestinos";
 import { ListaDestinos } from "./ListDestinos";
+import { styles } from "../styles/styles";
 
 export const Destino = () => {
     //ESTADOS PARA FORMULARIOS
@@ -88,6 +89,12 @@ export const Destino = () => {
     return (
         <View>
             <ScrollView>
+                <Text
+                    style={[{ fontFamily: "Lilita_One" },
+                    styles.txttitle]}>
+                    Agrega nuevos destinos !
+                </Text>
+
                 <FormDestino
                     nombre={nombre}
                     setNombre={setNombre}
@@ -111,7 +118,7 @@ export const Destino = () => {
                     setselectLat={setselectLat}
                     selectLong={selectLong}
                     setselectLong={setselectLong}
-                    EditarDestino={EditarDestino}        
+                    EditarDestino={EditarDestino}
                 />
             </ScrollView>
         </View>
