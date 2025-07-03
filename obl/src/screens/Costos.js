@@ -87,7 +87,7 @@ export const Costos = () => {
                             textAlign: 'center'
                         }}
                     >
-                        {c.tipo}
+                        {c.descrCosto}
                     </Text>
 
                     <Text
@@ -97,7 +97,7 @@ export const Costos = () => {
                             fontWeight: 'bold'
                         }}
                     >
-                        {c.monto}
+                        $ {c.monto}
                     </Text>
 
                     <View
@@ -109,9 +109,9 @@ export const Costos = () => {
                     >
 
                         <MaterialIcons
-                            name="add"
+                            name="delete"
                             size={30}
-                            style={styles.iconos}
+                            color="#3868A6"
                             onPress={() => dispatch(delCosto({ id: c.id }))}
                         />
                     </View>
