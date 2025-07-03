@@ -5,7 +5,8 @@ import { styles } from "../styles/styles";
 import { useState } from "react";
 import { FormViaje } from "./FormViaje";
 
-import { SeleccionarIntegrantes } from "./SeleccionIntegrantes";
+import { SeleccionIntegrantes } from "./SeleccionIntegrantes";
+import { SeleccionDestinos } from "./SeleccionDestinos";
 
 export const Viajes = () => {
 
@@ -54,7 +55,11 @@ export const Viajes = () => {
                     setFechaFin={setFechaFin}
                 />
 
-                <SeleccionarIntegrantes />
+                <SeleccionIntegrantes />
+
+
+                <SeleccionDestinos />
+
 
                 <Pressable
                     style={styles.btnEstandar}

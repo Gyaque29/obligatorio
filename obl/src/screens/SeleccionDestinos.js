@@ -3,29 +3,30 @@ import { View, Text, Pressable, ScrollView, Modal } from "react-native";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useDispatch, useSelector } from 'react-redux';
-import { addPersona, delPersona } from '../redux/viajesSlice';
-import { getPersonas } from '../database/database';
+import { addDestino, delDestino } from '../redux/viajesSlice';
+import { getDestinos } from '../database/database';
 import { styles } from "../styles/styles";
 
-export const SeleccionIntegrantes = () => {
+export const SeleccionDestinos = () => {
+
   const dispatch = useDispatch();
-  const seleccionados = useSelector(state => state.viajes.integrantes);
+  const seleccionados = useSelector(state => state.viajes.destinos);
 
   const [modal, setModal] = useState(false);
-  const [personas, setPersonas] = useState([]);
+  const [destinos, setDestinos] = useState([]);
 
-  // Carga personas
-  const cargarPersonas = () => {
-    getPersonas().then(data => setPersonas(data));
+  //CARGA DESTINOS
+  const cargarDestinos = () => {
+    getDestinos().then(data => setDestinos(data));
   };
 
   const abrirModal = () => {
     setModal(true);
-    cargarPersonas();
+    cargarDestinos();
   };
 
   useEffect(() => {
-    cargarPersonas();
+    cargarDestinos();
   }, []);
 
   return (
@@ -42,7 +43,7 @@ export const SeleccionIntegrantes = () => {
               color: 'white'
             }}
           >
-            Agrega Integrantes
+            Agrega Destinos
           </Text>
         </Pressable>
       </View>
@@ -65,12 +66,12 @@ export const SeleccionIntegrantes = () => {
                 margin: 15
               }}
             >
-              Integrantes Seleccionados !
+              Integrantes Destinos !
             </Text>
 
-            {seleccionados.map(p => (
+            {seleccionados.map(d => (
               <View
-                key={p.id}
+                key={d.id}
                 style={styles.containerlistchek}
               >
                 <Text
@@ -80,7 +81,7 @@ export const SeleccionIntegrantes = () => {
                     textAlign: 'center'
                   }}
                 >
-                  {p.nombre}
+                  {d.nombre}
                 </Text>
 
                 <Text
@@ -89,14 +90,23 @@ export const SeleccionIntegrantes = () => {
                     textAlign: 'center'
                   }}
                 >
-                  {p.telefono}
+                  {d.lat}
+                </Text>
+
+                 <Text
+                  style={{
+                    fontSize: 16,
+                    textAlign: 'center'
+                  }}
+                >
+                  {d.long}
                 </Text>
 
                 <FontAwesome
                   name="remove"
                   size={30}
                   style={styles.iconos}
-                  onPress={() => dispatch(delPersona(p))}
+                  onPress={() => dispatch(delDestino(d))}
                 />
               </View>
             ))}
@@ -109,12 +119,12 @@ export const SeleccionIntegrantes = () => {
                 margin: 15
               }}
             >
-              Seleccionar Integrantes !
+              Seleccionar Destinos !
             </Text>
 
-            {personas.map(persona => (
+            {destinos.map(d => (
               <View
-                key={persona.id}
+                key={d.id}
                 style={styles.containerlistchek}
               >
                 <Text
@@ -124,7 +134,7 @@ export const SeleccionIntegrantes = () => {
                     textAlign: 'center'
                   }}
                 >
-                  {persona.nombre}
+                  {d.nombre}
                 </Text>
 
                 <Text
@@ -133,7 +143,16 @@ export const SeleccionIntegrantes = () => {
                     textAlign: 'center'
                   }}
                 >
-                  {persona.telefono}
+                  {d.lat}
+                </Text>
+
+                 <Text
+                  style={{
+                    fontSize: 16,
+                    textAlign: 'center'
+                  }}
+                >
+                  {d.long}
                 </Text>
 
                 <View
@@ -147,7 +166,7 @@ export const SeleccionIntegrantes = () => {
                     name="add"
                     size={30}
                     style={styles.iconos}
-                    onPress={() => dispatch(addPersona(persona))}
+                    onPress={() => dispatch(addDestino(d))}
                   />
                 </View>
               </View>
