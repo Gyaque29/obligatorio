@@ -1,9 +1,28 @@
 import { View, Text, TextInput, Pressable } from "react-native";
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useFonts } from "expo-font";
 import { styles } from "../styles/styles";
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import { useSelector, useDispatch } from "react-redux";
+import { addCosto, delCosto } from "../redux/viajesSlice";
+import { useState } from "react";
 
 export const Costos = () => {
+
+    const dispatch = useDispatch();
+    const costos = useSelector(state => state.viajes.costos);
+
+    const [descrCosto, setdescrCosto] = useState('')
+    const [monto, setMonto] = useState('')
+
+    const costo = {id : Date.now(),  descrCosto, monto }
+
+    //FUNCION ADDCOSTO DISPATCH Y LIMPIO ESTADOS
+    const AddCosto = (costo) => {
+        dispatch(addCosto(costo))
+        setdescrCosto('')
+        setMonto('')
+    }
 
     //FUENTES CARGADAS
     let [fontsLoaded] = useFonts({
@@ -17,10 +36,10 @@ export const Costos = () => {
 
     if (!fontsLoaded) return null
     return (
-        <View style={styles.containercosto}>
+        <View style={styles.containerform}>
             <Text
                 style={[{ fontFamily: "Lilita_One" },
-                styles.texttitleseccion]}>
+                styles.txttitle]}>
                 Agrega tus costos !
             </Text>
 
@@ -34,21 +53,73 @@ export const Costos = () => {
             <TextInput
                 style={styles.input}
                 placeholder="Ingrese una descripcion"
+                value={descrCosto}
+                onChangeText={setdescrCosto}
             />
 
             <TextInput
                 style={styles.input}
                 placeholder="Ingrese un monto"
+                value={monto}
+                onChangeText={setMonto}
             />
 
             <Pressable
-                style={styles.btnAgregar}
+                style={styles.btnEstandar}
+                onPress={() => AddCosto(costo)}
             >
                 <Text
                     style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'white' }}>
                     Agregar Costo
                 </Text>
             </Pressable>
+
+
+            {costos.map(c => (
+                <View
+                    key={c.id}
+                    style={styles.containerlistchek}
+                >
+                    <Text
+                        style={{
+                            fontFamily: "Lilita_One",
+                            fontSize: 16,
+                            textAlign: 'center'
+                        }}
+                    >
+                        {c.tipo}
+                    </Text>
+
+                    <Text
+                        style={{
+                            fontSize: 16,
+                            textAlign: 'center',
+                            fontWeight: 'bold'
+                        }}
+                    >
+                        {c.monto}
+                    </Text>
+
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}
+                    >
+
+                        <MaterialIcons
+                            name="add"
+                            size={30}
+                            style={styles.iconos}
+                            onPress={() => dispatch(delCosto({ id: c.id }))}
+                        />
+                    </View>
+                </View>
+            ))}
+
+
+
         </View>
     )
 }

@@ -7,6 +7,7 @@ import { FormViaje } from "./FormViaje";
 
 import { SeleccionIntegrantes } from "./SeleccionIntegrantes";
 import { SeleccionDestinos } from "./SeleccionDestinos";
+import { Costos } from "./Costos";
 
 export const Viajes = () => {
 
@@ -59,6 +60,8 @@ export const Viajes = () => {
 
 
                 <SeleccionDestinos />
+
+                <Costos />
 
 
                 <Pressable

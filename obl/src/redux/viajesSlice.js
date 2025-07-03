@@ -5,10 +5,33 @@ export const viajesSlice = createSlice({
     initialState: {
         integrantes: [],
         destinos: [],
+        costos: [],
 
     },
 
     reducers: {
+
+        //FUNCIONES PARA COSTOS
+        addCosto: (state, action) => {
+            const costos = action.payload
+
+            const existe = state.costos.find(c => c.id == costos.id)
+
+            if(!existe){
+                state.costos.push(costos)
+                console.log('Costo Agregado Correctamente')
+            }
+        },
+
+        delCosto: (state, action) => {
+            const { id } = action.payload
+
+            state.costos = state.costos.filter(c => c.id !== id)
+            console.log('Costo Eliminado Correctamente')
+        },
+
+
+
         //FUNCIONES PARA DESTINOS
         addDestino: (state, action) => {
             const destinos = action.payload
@@ -17,6 +40,10 @@ export const viajesSlice = createSlice({
 
             if(!existe){
              state.destinos.push(destinos)
+             console.log('Destino Agregado Correctamente')
+            }
+            else{
+                console.log('Ya Agregaste el Destino')
             }
         },
 
@@ -24,6 +51,7 @@ export const viajesSlice = createSlice({
             const destinos = action.payload
 
             state.destinos = state.destinos.filter(d => d.id !== destinos.id)
+            console.log('Destino Eliminado Correctamente')
         },
 
         
@@ -35,16 +63,21 @@ export const viajesSlice = createSlice({
             
             if(!existe){
                  state.integrantes.push(persona)
-            }                    
+                 console.log('Persona Agregada Correctamente')
+            }             
+            else{
+                console.log('Ya Agregaste la Persona')
+            }       
         },
 
         delPersona: (state, action) => {
             const persona = action.payload
             
             state.integrantes = state.integrantes.filter(p => p.id !== persona.id)
+            console.log('Persona Eliminada Correctamente')
         }
     }
 })
 
-export const { addPersona, delPersona, addDestino, delDestino } = viajesSlice.actions;
+export const { addPersona, delPersona, addDestino, delDestino, addCosto, delCosto } = viajesSlice.actions;
 export default viajesSlice.reducer;

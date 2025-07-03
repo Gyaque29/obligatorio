@@ -101,10 +101,10 @@ export const styles = StyleSheet.create({
     },
     containerlistchek:{
         textAlign: 'center',
-        marginTop: 5,
+        marginTop: 10,
         marginRight: 50,
         marginLeft: 50,
-        width: 150,
+        width: 175,
         backgroundColor: 'white',
         marginBottom: 15,
         borderRadius: 10,
