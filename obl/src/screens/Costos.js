@@ -12,15 +12,15 @@ export const Costos = () => {
     const dispatch = useDispatch();
     const costos = useSelector(state => state.viajes.costos);
 
-    const [descrCosto, setdescrCosto] = useState('')
+    const [tipo, setTipo] = useState('')
     const [monto, setMonto] = useState('')
 
-    const costo = {id : Date.now(),  descrCosto, monto }
+    const costo = {id : Date.now(),  tipo, monto }
 
     //FUNCION ADDCOSTO DISPATCH Y LIMPIO ESTADOS
     const AddCosto = (costo) => {
         dispatch(addCosto(costo))
-        setdescrCosto('')
+        setTipo('')
         setMonto('')
     }
 
@@ -53,8 +53,8 @@ export const Costos = () => {
             <TextInput
                 style={styles.input}
                 placeholder="Ingrese una descripcion"
-                value={descrCosto}
-                onChangeText={setdescrCosto}
+                value={tipo}
+                onChangeText={setTipo}
             />
 
             <TextInput
@@ -87,7 +87,7 @@ export const Costos = () => {
                             textAlign: 'center'
                         }}
                     >
-                        {c.descrCosto}
+                        {c.tipo}
                     </Text>
 
                     <Text
