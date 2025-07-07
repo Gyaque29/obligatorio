@@ -196,4 +196,15 @@ export const crearViajeCompleto = async (nombre, fechaInicio, fechaFin, integran
     }
 }
 
+//METODO GET PARA OBTENER LOS VIAJES 
+export const getViajes = async() => {
+     try {
+        const { data } = await supabase.from('viajes').select('*');
+        console.log('VIAJES - Consulta GET con exito');
+        return data;
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 

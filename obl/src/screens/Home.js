@@ -1,9 +1,30 @@
 import { View, Text } from "react-native"
 import { useFonts } from "expo-font"
 import { styles } from "../styles/styles";
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { getViajes } from '../database/database';
+import { useFocusEffect } from '@react-navigation/native';
+import { useState, useCallback } from "react";
+
 
 export const Home = () => {
+
+    //ESTADO PARA MANEJAR LOS VIAJES
+    const [viajes, setViajes] = useState([])
+
+    //METODO PARA CARGAR VIAJES AL RENDER
+    const CargarViajes = () => {
+        getViajes().then((data) => {
+            setViajes(data);
+        });
+    }
+
+    //USE EFECT PARA CARGAR METODO DE CARGAR VIAJES
+    useFocusEffect(
+        useCallback(() => {
+            CargarViajes();
+        }, [])
+    );
+
     //FUENTES CARGADAS
     let [fontsLoaded] = useFonts({
         Chicle: require('../font/Chicle/Chicle-Regular.ttf'),
@@ -24,12 +45,41 @@ export const Home = () => {
                 Bienvenidos !
             </Text>
 
-            <MaterialCommunityIcons
-                name="hand-clap"
-                size={24}
-                color="black"
-                style={styles.iconos}
-            />
+            {viajes.map((viaje) => (
+                <View style={styles.containerlist}
+                    key={viaje.id}    >
+                    <Text
+                        style={{
+                            fontFamily: "Lilita_One",
+                            fontSize: 16,
+                            textAlign: 'center',
+                        }}
+                    >
+                        {viaje.nombre}
+                    </Text>
+
+                    <Text
+                        style={{ fontSize: 16, textAlign: 'center' }}
+                    >
+                        {viaje.f_inicio}
+                    </Text>
+
+
+                    <Text
+                        style={{ fontSize: 16, textAlign: 'center' }}
+                    >
+                        {viaje.f_fin}
+                    </Text>
+
+                    <View style={{
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}>
+                    </View>
+                </View>
+            ))}
+
         </View>
     )
 }
