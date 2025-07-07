@@ -45,6 +45,13 @@ export const Personas = () => {
 
     //LLAMO AL METODO Y LE PASO LOS DATOS
     const InsertPersona = () => {
+        if(!nombre){
+            console.log('PERSONAS - Campo nombre vacio')
+            return
+        }else if(!telefono) {
+            console.log('PERSONAS - Campo telefono vacio')
+            return
+        }
         addPersona(nombre, telefono)
             .then(() => {
                 setNombre('');

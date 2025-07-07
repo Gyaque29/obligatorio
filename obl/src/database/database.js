@@ -13,7 +13,7 @@ export const addPersona = async (nombre, telefono) => {
         const { data } = await supabase
             .from('integrantes')
             .insert({ nombre, telefono });
-        console.log('Persona cargado correctamente');
+        console.log('PERSONAS -  Aargado correctamente');
         return data;
 
     } catch (e) {
@@ -25,7 +25,7 @@ export const addPersona = async (nombre, telefono) => {
 export const getPersonas = async () => {
     try {
         const { data } = await supabase.from('integrantes').select('*');
-        console.log('Consulta con exito');
+        console.log('PERSONAS - Consulta GET con exito');
         return data;
     } catch (e) {
         console.log(e);
@@ -36,7 +36,7 @@ export const getPersonas = async () => {
 export const deletePersona = async (id) => {
     try {
         const { data } = await supabase.from('integrantes').delete().eq('id', id);
-        console.log('Persona eliminado con exito');
+        console.log('PERSONAS - Eliminado con exito');
         return data;
     } catch (e) {
         console.log(e);
@@ -48,12 +48,13 @@ export const editarPersona = async (id, nombre, telefono) => {
     const persona = { nombre, telefono }
     try {
         const { data } = await supabase.from('integrantes').update(persona).eq('id', id);
-        console.log('Persona editado con exito');
+        console.log('PERSONAS - Editado con exito');
         return data;
     } catch (e) {
         console.log(e);
     }
 }
+
 
 
 
@@ -63,7 +64,7 @@ export const addDestino = async (nombre, lat, long) => {
         const { data } = await supabase
             .from('destinos')
             .insert({ nombre, lat, long });
-        console.log('Destino cargado correctamente');
+        console.log('DESTINOS - Agregado correctamente');
         return data;
 
     } catch (e) {
@@ -75,7 +76,7 @@ export const addDestino = async (nombre, lat, long) => {
 export const getDestinos = async () => {
     try {
         const { data } = await supabase.from('destinos').select('*');
-        console.log('Consulta con exito');
+        console.log('DESTINOS - Consulta GET con exito');
         return data;
     } catch (e) {
         console.log(e);
@@ -86,7 +87,7 @@ export const getDestinos = async () => {
 export const deleteDestino = async (id) => {
     try {
         const { data } = await supabase.from('destinos').delete().eq('id', id);
-        console.log('Destino eliminado con exito');
+        console.log('DESTINOS - Eliminado con exito');
         return data;
     } catch (e) {
         console.log(e);
@@ -98,7 +99,7 @@ export const editDestino = async (id, nombre, lat, long) => {
     const destino = { nombre, lat, long }
     try {
         const { data } = await supabase.from('destinos').update(destino).eq('id', id);
-        console.log('Destino editado con exito');
+        console.log('DESTINOS - Editado con exito');
         return data;
     } catch (e) {
         console.log(e);
@@ -112,11 +113,11 @@ export const addViaje = async (viaje) => {
             .from('viajes')
             .insert(viaje)
             .select()
-        console.log('Viaje Creado Correctamente')
+        console.log('VIAJES - Creado Correctamente')
         return data
 
     } catch (e) {
-        console.log('Error al cargar Viaje', e)
+        console.log('VIAJES - Error al cargar Viaje', e)
     }
 }
 
@@ -128,14 +129,14 @@ export const addViajeIntegrante = async (id_viaje, id_integrante) => {
         const { data } = await supabase
             .from('viajeintegrante')
             .insert(viajeintegrante)
-        console.log('Viaje Integrante Creado Correctamente')
+        console.log('VIAJES INTEGRANTES - Integrante Creado Correctamente')
         return data
     } catch (e) {
-        console.log('Error al cargar Viaje Integrante', e)
+        console.log('VIAJES IUNTEGRANTES - Error al cargar Viaje Integrante', e)
     }
 }
 
-//METODO PARA CREAR VIAJEINTEGRANTE
+//METODO PARA CREAR VIAJEDESTINO
 export const addviajeDestino = async (id_viaje, id_destino) => {
     try {
         const viajedestino = { id_viaje, id_destino }
@@ -143,10 +144,10 @@ export const addviajeDestino = async (id_viaje, id_destino) => {
         const { data } = await supabase
             .from('viajedestino')
             .insert(viajedestino)
-        console.log('Viaje Destino Creado Correctamente')
+        console.log('VIAJE DESTINO - Creado Correctamente')
         return data
     } catch (e) {
-        console.log('Error al cargar Viaje Destino', e)
+        console.log('VIAJE DESTINO - Error al cargar Viaje Destino', e)
     }
 }
 
@@ -158,7 +159,7 @@ export const addCosto = async (c, id_viaje) => {
         const { data } = await supabase
             .from('costos')
             .insert(costo);
-            console.log('Costo Creado Correctamente')
+            console.log('COSTO - Creado Correctamente')
         return data;
 
     } catch (e) {
@@ -173,6 +174,7 @@ export const crearViajeCompleto = async (nombre, fechaInicio, fechaFin, integran
 
     try {
         const resultado = await addViaje(viaje)
+        
         const id_viaje = resultado[0].id
 
         integrantes.map(i => {
@@ -186,7 +188,7 @@ export const crearViajeCompleto = async (nombre, fechaInicio, fechaFin, integran
         costos.map(c => {
             addCosto(c, id_viaje)
         })
-
+        
         return resultado
 
     } catch (e) {

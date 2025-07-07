@@ -11,6 +11,13 @@ export const viajesSlice = createSlice({
 
     reducers: {
 
+        //RESET ARREGLOS
+        resetArreglo : (state) => {
+            state.integrantes = []
+            state.destinos = []
+            state.costos = []
+        },
+
         //FUNCIONES PARA COSTOS
         addCosto: (state, action) => {
             const costos = action.payload
@@ -19,7 +26,7 @@ export const viajesSlice = createSlice({
 
             if(!existe){
                 state.costos.push(costos)
-                console.log('Costo Agregado Correctamente')
+                console.log('COSTO - Agregado Correctamente a Redux')
             }
         },
 
@@ -27,7 +34,7 @@ export const viajesSlice = createSlice({
             const { id } = action.payload
 
             state.costos = state.costos.filter(c => c.id !== id)
-            console.log('Costo Eliminado Correctamente')
+            console.log('COSTO - Eliminado Correctamente de Redux')
         },
 
 
@@ -40,10 +47,10 @@ export const viajesSlice = createSlice({
 
             if(!existe){
              state.destinos.push(destinos)
-             console.log('Destino Agregado Correctamente')
+             console.log('DESTINO - Agregado Correctamente a Redux')
             }
             else{
-                console.log('Ya Agregaste el Destino')
+                console.log('DESTINO - Ya Agregaste el Destino a Redux')
             }
         },
 
@@ -51,7 +58,7 @@ export const viajesSlice = createSlice({
             const destinos = action.payload
 
             state.destinos = state.destinos.filter(d => d.id !== destinos.id)
-            console.log('Destino Eliminado Correctamente')
+            console.log('DESTINO - Eliminado Correctamente de Redux')
         },
 
         
@@ -63,10 +70,10 @@ export const viajesSlice = createSlice({
             
             if(!existe){
                  state.integrantes.push(persona)
-                 console.log('Persona Agregada Correctamente')
+                 console.log('PERSONA - Agregada Correctamente a Redux')
             }             
             else{
-                console.log('Ya Agregaste la Persona')
+                console.log('PERSONA - Ya Agregaste la Persona a Redux')
             }       
         },
 
@@ -74,10 +81,10 @@ export const viajesSlice = createSlice({
             const persona = action.payload
             
             state.integrantes = state.integrantes.filter(p => p.id !== persona.id)
-            console.log('Persona Eliminada Correctamente')
+            console.log('PERSONA - Eliminada Correctamente de Redux')
         }
     }
 })
 
-export const { addPersona, delPersona, addDestino, delDestino, addCosto, delCosto } = viajesSlice.actions;
+export const { addPersona, delPersona, addDestino, delDestino, addCosto, delCosto, resetArreglo } = viajesSlice.actions;
 export default viajesSlice.reducer;

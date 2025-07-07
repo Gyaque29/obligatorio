@@ -4,14 +4,16 @@ import { useFonts } from "expo-font";
 import { styles } from "../styles/styles";
 import { useState } from "react";
 import { FormViaje } from "./FormViaje";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { resetArreglo } from "../redux/viajesSlice";
 import { SeleccionIntegrantes } from "./SeleccionIntegrantes";
 import { SeleccionDestinos } from "./SeleccionDestinos";
 import { Costos } from "./Costos";
 import { crearViajeCompleto } from "../database/database";
 
 export const Viajes = () => {
+
+    const dispatch = useDispatch();
 
     //ESTADO PARA MANEJAR NOMBRE VIAJE
     const [nombre, setNombre] = useState('');
@@ -25,12 +27,35 @@ export const Viajes = () => {
     const costos = useSelector(state => state.viajes.costos)
 
     const crearViaje = (nombre, fechaInicio, fechaFin) => {
-         crearViajeCompleto(nombre, fechaInicio, fechaFin, integrantes, destinos, costos)
-         setNombre('')
-         setFechaInicio('')
-         setFechaFin('')
-    }   
-   
+        if (!nombre) {
+            console.log('VIAJES - Campo nombre vacio')
+            return
+        } else if (!fechaInicio) {
+            console.log('VIAJES - Campo fecha inicio vacio')
+            return
+        } else if (!fechaFin) {
+            console.log('VIAJES - Campo fecha fin vacio')
+            return
+        } else if (fechaFin < fechaInicio) {
+            console.log('VIAJES - La fecha inicio debe menor a la fecha fin')
+            return
+        } else if (!integrantes.length) {
+            console.log('VIAJES - Agrega integrantes al viaje')
+            return
+        } else if (!destinos.length) {
+            console.log('VIAJES - Agrega destinos al viaje')
+            return
+        } else if (!costos.length) {
+            console.log('VIAJES -Agrega costos al viaje')
+        }
+
+        crearViajeCompleto(nombre, fechaInicio, fechaFin, integrantes, destinos, costos)
+        setNombre('')
+        setFechaInicio('')
+        setFechaFin('')
+        dispatch(resetArreglo(integrantes, destinos, costos))
+    }
+
 
     //FUENTES CARGADAS
     let [fontsLoaded] = useFonts({

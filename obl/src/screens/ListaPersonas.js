@@ -20,7 +20,8 @@ export const ListaPersonas = ({
         <>
             {/*MAPEO EL ESTADO QUE TIENE LAS PERSONAS */}
             {personas.map((personas) => (
-                <View style={styles.containerlist}>
+                <View style={styles.containerlist}
+                    key={personas.id}    >
                     <FontAwesome6
                         style={styles.iconos}
                         name="contact-card"
@@ -34,14 +35,12 @@ export const ListaPersonas = ({
                             fontSize: 16,
                             textAlign: 'center',
                         }}
-                        key={personas.id}
                     >
                         {personas.nombre}
                     </Text>
 
                     <Text
                         style={{ fontSize: 16, textAlign: 'center' }}
-                        key={personas.id}
                     >
                         {personas.telefono}
                     </Text>
@@ -77,11 +76,11 @@ export const ListaPersonas = ({
                 animationType="slide"
                 onRequestClose={() => setModal(false)}
             >
-                    
-                <View 
+
+                <View
                     style={styles.ModalEditar}
                 >
-                    <View 
+                    <View
                         style={styles.containerEdicion}
                     >
                         <Text style={{
@@ -90,7 +89,7 @@ export const ListaPersonas = ({
                             textAlign: 'center',
                             fontWeight: 'bold',
                             marginTop: 25,
-                            color: 'white',                           
+                            color: 'white',
                         }}>
                             Editar Persona Seleccionado
                         </Text>

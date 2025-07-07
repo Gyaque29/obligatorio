@@ -19,9 +19,16 @@ export const Costos = () => {
 
     //FUNCION ADDCOSTO DISPATCH Y LIMPIO ESTADOS
     const AddCosto = (costo) => {
-        dispatch(addCosto(costo))
+        if(!tipo){
+            console.log('COSTOS - Campo descripcion vacio')
+            return
+        }else if(!monto){
+            console.log('COSTOS - Campo monto vacio')
+            return
+        }
         setTipo('')
         setMonto('')
+        dispatch(addCosto(costo))
     }
 
     //FUENTES CARGADAS

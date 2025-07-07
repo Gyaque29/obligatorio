@@ -20,10 +20,22 @@ export const Destino = () => {
     const [selectNombre, setselectNombre] = useState('');
     const [selectLat, setselectLat] = useState('');
     const [selectLong, setselectLong] = useState('');
-    const [selectId, setselectselectId] = useState('');
+    const [selectId, setselectid] = useState('');
 
     //LLAMO AL METODO Y LE PASO LOS DATOS
     const InsertDestino = () => {
+        if (!nombre) {
+            console.log('DESTINOS - Cambo nombre vacio')
+            return
+        }
+        else if (!lat) {
+            console.log('DESTINOS - Campo latitud vacio')
+            return
+        } else if (!long) {
+            console.log('DESTINOS - Campo longitud vacio')
+            return
+        }
+
         addDestino(nombre, lat, long)
             .then(() => {
                 setNombre('');
@@ -58,7 +70,7 @@ export const Destino = () => {
         setselectNombre(destinos.nombre)
         setselectLat(destinos.lat)
         setselectLong(destinos.lat)
-        setselectselectId(destinos.id)
+        setselectid(destinos.id)
         setModal(true);
     }
 
