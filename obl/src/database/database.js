@@ -154,12 +154,12 @@ export const addviajeDestino = async (id_viaje, id_destino) => {
 //METODO PARA CREAR COSTO
 export const addCosto = async (c, id_viaje) => {
     try {
-        const costo = {tipo: c.tipo, monto: c.monto, id_viaje}
+        const costo = { tipo: c.tipo, monto: c.monto, id_viaje }
 
         const { data } = await supabase
             .from('costos')
             .insert(costo);
-            console.log('COSTO - Creado Correctamente')
+        console.log('COSTO - Creado Correctamente')
         return data;
 
     } catch (e) {
@@ -174,7 +174,7 @@ export const crearViajeCompleto = async (nombre, fechaInicio, fechaFin, integran
 
     try {
         const resultado = await addViaje(viaje)
-        
+
         const id_viaje = resultado[0].id
 
         integrantes.map(i => {
@@ -188,7 +188,7 @@ export const crearViajeCompleto = async (nombre, fechaInicio, fechaFin, integran
         costos.map(c => {
             addCosto(c, id_viaje)
         })
-        
+
         return resultado
 
     } catch (e) {
@@ -197,8 +197,8 @@ export const crearViajeCompleto = async (nombre, fechaInicio, fechaFin, integran
 }
 
 //METODO GET PARA OBTENER LOS VIAJES 
-export const getViajes = async() => {
-     try {
+export const getViajes = async () => {
+    try {
         const { data } = await supabase.from('viajes').select('*');
         console.log('VIAJES - Consulta GET con exito');
         return data;
@@ -207,4 +207,26 @@ export const getViajes = async() => {
     }
 }
 
+
+//METODO PARA TRAER INTEGRANTES DE CIERTO VIAJE
+export const getIntegrantesDeViaje = async (id_viaje) => {
+    try {
+        const { data } = await supabase.from('viajeintegrante').select('id_integrante').eq('id_viaje', id_viaje)
+        data.map(i => {
+             getIntegrantes(i.id_integrante)
+        })
+        return data;
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+export const getIntegrantes = async (id) => {
+    try {
+        const { data } = await supabase.from('integrantes').select('nombre').eq('id', id)
+        return data;
+    } catch (e) {
+        console.log(e);
+    }
+}
 
