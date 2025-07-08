@@ -4,6 +4,7 @@ import { styles } from "../styles/styles";
 import { getViajes } from '../database/database';
 import { useFocusEffect } from '@react-navigation/native';
 import { useState, useCallback } from "react";
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 
 export const Home = () => {
@@ -45,6 +46,13 @@ export const Home = () => {
                 Bienvenidos !
             </Text>
 
+            <FontAwesome5
+                name="handshake"
+                size={30}
+                color="black"
+                style={styles.iconos}
+            />
+
             {viajes.map((viaje) => (
                 <View style={styles.containerlist}
                     key={viaje.id}    >
@@ -79,7 +87,6 @@ export const Home = () => {
                     </View>
                 </View>
             ))}
-
         </View>
     )
 }
