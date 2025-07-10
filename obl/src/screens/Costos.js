@@ -56,7 +56,6 @@ export const Costos = () => {
                 style={styles.iconos}
             />
 
-
             <TextInput
                 style={styles.input}
                 placeholder="Ingrese una descripcion"
