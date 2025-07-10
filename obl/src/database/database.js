@@ -53,9 +53,6 @@ export const editarPersona = async (id, nombre, telefono) => {
     }
 }
 
-
-
-
 //METODO ADD DESTINO
 export const addDestino = async (nombre, lat, long) => {
     try {
@@ -205,26 +202,93 @@ export const getViajes = async () => {
     }
 }
 
-
 //METODO PARA TRAER INTEGRANTES DE CIERTO VIAJE
 export const getIntegrantesDeViaje = async (id_viaje) => {
     try {
         const { data } = await supabase.from('viajeintegrante').select('id_integrante').eq('id_viaje', id_viaje)
-        data.map(i => {
-             getIntegrantes(i.id_integrante)
-        })
-        return data;
+
+        const nombres = [];
+
+        for (const i of data) {
+            const integrante = await getIntegrantes(i.id_integrante)
+            if (integrante && integrante.length > 0) {
+                nombres.push(integrante[0]?.nombre)
+            }
+        }
+        console.log(nombres)
+        return nombres
+
     } catch (e) {
-        console.log(e);
+        console.log(e)
     }
 }
 
+//METODO PARA TRAER INTEGRANTES DE A 1 PARA METODO ANTERIOR
 export const getIntegrantes = async (id) => {
     try {
         const { data } = await supabase.from('integrantes').select('nombre').eq('id', id)
-        return data;
+        return data
     } catch (e) {
-        console.log(e);
+        console.log(e)
     }
 }
 
+//METODO PARA TRAER DESTINOS DE CIERTO VIAJE
+export const getDestinosDeViaje = async (id_viaje) => {
+    try {
+        const { data } = await supabase.from('viajedestino').select('id_destino').eq('id_viaje', id_viaje)
+
+        const nombres = [];
+
+        for (const i of data) {
+            const destino = await getNombreDestinos(i.id_destino)
+            if (destino && destino.length > 0) {
+                nombres.push(destino[0]?.nombre)
+            }
+        }
+        console.log(nombres)
+        return nombres
+
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+//METODO PARA TRAER DESTINO DE A 1 PARA METODO ANTERIOR
+export const getNombreDestinos = async (id) => {
+    try {
+        const { data } = await supabase.from('destinos').select('nombre').eq('id', id)
+        return data
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+//METODO PARA TRAER COSTOS DE CIERTO VIAJE
+export const getCostosDeViaje = async (id_viaje) => {
+    try {
+        const { data } = await supabase.from('costos').select('tipo, monto').eq('id_viaje', id_viaje)
+
+        return data
+
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+//METODO PARA TRAER COSTOS DE CIERTO VIAJE
+export const getCostosTotalDeViaje = async (id_viaje) => {
+    try {
+        const { data } = await supabase.from('costos').select('monto').eq('id_viaje', id_viaje)
+
+        let costoTotal = 0
+        data.map(d => {
+            costoTotal = costoTotal + Number(d.monto)
+        })
+        
+        return costoTotal
+
+    } catch (e) {
+        console.log(e)
+    }
+}

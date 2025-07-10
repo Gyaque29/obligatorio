@@ -122,8 +122,9 @@ export const styles = StyleSheet.create({
         borderWidth: 2,
     },
     containerEdicion:{
-        textAlign: 'center',
+        textAlign: 'center',    
         margin: 20,
         padding: 5,
+        backgroundColor: 'rgba(67, 62, 62, 0.7)',
     }
 })

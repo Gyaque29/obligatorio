@@ -1,7 +1,7 @@
 import { View, Text, Modal, Pressable, ScrollView } from "react-native"
 import { useFonts } from "expo-font"
 import { styles } from "../styles/styles";
-import { getViajes, getIntegrantesDeViaje, getIntegrantes } from '../database/database';
+import { getViajes, getIntegrantesDeViaje, getDestinosDeViaje, getCostosDeViaje, getCostosTotalDeViaje } from '../database/database';
 import { useFocusEffect } from '@react-navigation/native';
 import { useState, useCallback } from "react";
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
@@ -23,6 +23,16 @@ export const Home = () => {
     //ESTADO PARA MANEJAR LOS INTEGRANTES DE VIAJE SELECCIONADO
     const [integrantes, setIntegrantes] = useState([])
 
+    //ESTADO PARA MANEJAR LOS  DESTINOS DE VIAJE SELECCIONADO
+    const [destinos, setDestinos] = useState([])
+
+    //ESTADO PARA MANEJAR LOS COSTOS DEL VIAJE SELECCIONADO
+    const [costos, setCostos] = useState([])
+
+    //ESTADO PARA MANEJAR COSTO TOTAL VIAJE SELECCIONADO
+    const [costoTOTAL, setCostoTOTAL] = useState([])
+
+
     //METODO PARA CARGAR VIAJES AL RENDER
     const CargarViajes = () => {
         getViajes().then((data) => {
@@ -33,6 +43,22 @@ export const Home = () => {
     const CargarIntegrantes = (id) => {
         getIntegrantesDeViaje(id).then((data) => {
             setIntegrantes(data)
+            console.log('INTEGRANTES CARGADOS: ', data)
+        })
+
+        getDestinosDeViaje(id).then((data) => {
+            setDestinos(data)
+            console.log('DESTINOS CARGADOS: ', data)
+        })
+
+        getCostosDeViaje(id).then((data) => {
+            setCostos(data)
+            console.log('COSTOS CARGADOS', data)
+        })
+
+        getCostosTotalDeViaje(id).then((data) => {
+            setCostoTOTAL(data)
+            console.log('COSTO TOTAL', data)
         })
     }
 
@@ -128,98 +154,189 @@ export const Home = () => {
                     animationType="slide"
                     onRequestClose={() => setModal(false)}
                 >
-
-                    <View
-                        style={styles.ModalEditar}
-                    >
+                    <ScrollView>
                         <View
-                            style={styles.containerEdicion}
+                            style={styles.ModalEditar}
                         >
-                            <Text style={{
-                                fontFamily: "Lilita_One",
-                                fontSize: 35,
-                                textAlign: 'center',
-                                fontWeight: 'bold',
-                                marginTop: 25,
-                                color: 'white',
-                            }}>
-                                Informacion del viaje Seleccionado
-                            </Text>
-
-                            <Fontisto
-                                name="zoom"
-                                size={24}
-                                color="black"
-                                style={styles.iconos}
-                            />
-
-                            <Text
-                                style={{
-                                    fontSize: 16,
+                            <View
+                                style={styles.containerEdicion}
+                            >
+                                <Text style={{
+                                    fontFamily: "Lilita_One",
+                                    fontSize: 35,
                                     textAlign: 'center',
                                     fontWeight: 'bold',
                                     marginTop: 25,
                                     color: 'white',
-                                    fontSize: 25,
-                                }}
-                            >
-                                {nombre}
-                            </Text>
+                                }}>
+                                    INFO DEL VIAJE
+                                </Text>
 
-                            <Text
-                                style={{
-                                    fontSize: 16,
+                                <Fontisto
+                                    name="zoom"
+                                    size={30}
+                                    color="black"
+                                    style={styles.iconos}
+                                />
+
+                                <Text
+                                    style={{
+                                        textAlign: 'center',
+                                        fontWeight: 'bold',
+                                        marginTop: 25,
+                                        color: 'white',
+                                        fontSize: 20,
+                                    }}
+                                >
+                                    NOMBRE: {nombre}
+                                </Text>
+
+                                <Text
+                                    style={{
+                                        textAlign: 'center',
+                                        fontWeight: 'bold',
+                                        marginTop: 25,
+                                        color: 'white',
+                                        fontSize: 20,
+                                    }}
+                                >
+                                    FECHA INICIO: {fechaInicio}
+                                </Text>
+
+                                <Text
+                                    style={{
+                                        textAlign: 'center',
+                                        fontWeight: 'bold',
+                                        marginTop: 10,
+                                        color: 'white',
+                                        fontSize: 20,
+                                    }}
+                                >
+                                    FECHA FIN: {fechafin}
+                                </Text>
+
+                                <Text style={{
+                                    fontFamily: "Lilita_One",
+                                    fontSize: 20,
+                                    marginTop:15,
                                     textAlign: 'center',
                                     fontWeight: 'bold',
-                                    marginTop: 25,
                                     color: 'white',
-                                    fontSize: 18,
-                                }}
-                            >
-                                FECHA INICIO : {fechaInicio}
-                            </Text>
+                                }}>
+                                    INTEGRANTES
+                                </Text>
+                                {integrantes.map((i) => (
+                                    <View
+                                        style={styles.containerlist}
+                                    >
 
-                            <Text
-                                style={{
-                                    fontSize: 16,
+
+                                        <Text
+                                            style={{
+                                                fontFamily: "Lilita_One",
+                                                fontSize: 20,
+                                                textAlign: 'center',
+                                                fontWeight: 'bold',
+                                                color: 'white',
+                                            }}
+                                        >
+                                            - {i}
+                                        </Text>
+                                    </View>
+                                ))}
+
+                                <Text style={{
+                                    fontFamily: "Lilita_One",
+                                    fontSize: 20,
+                                    marginTop:15,
                                     textAlign: 'center',
                                     fontWeight: 'bold',
-                                    marginTop: 10,
                                     color: 'white',
-                                    fontSize: 18,
-                                }}
-                            >
-                                FECHA FIN : {fechafin}
-                            </Text>
+                                }}>
+                                    DESTINOS
+                                </Text>
 
-                            {integrantes.map((i) => (
-                                <View
-                                    style={styles.containerlist}
+                                {destinos.map((d) => (
+                                    <View
+                                        style={styles.containerlist}
+                                    >
+                                        <Text
+                                            style={{
+                                                fontFamily: "Lilita_One",
+                                                fontSize: 20,
+                                                textAlign: 'center',
+                                                fontWeight: 'bold',
+                                                color: 'white',
+                                            }}
+                                        >
+                                            - {d}
+                                        </Text>
+                                    </View>
+                                ))}
+
+                                <Text style={{
+                                    fontFamily: "Lilita_One",
+                                    fontSize: 20,
+                                    marginTop:15,
+                                    textAlign: 'center',
+                                    fontWeight: 'bold',
+                                    color: 'white',
+                                }}>
+                                    COSTOS
+                                </Text>
+
+                                {costos.map((c) => (
+                                    <View
+                                        style={styles.containerlist}
+                                    >
+                                        <Text
+                                            style={{
+                                                fontFamily: "Lilita_One",
+                                                fontSize: 18,
+                                                textAlign: 'center',
+                                                fontWeight: 'bold',
+                                                color: 'white',
+                                            }}
+                                        >
+                                            COSTO: {c.tipo}
+                                        </Text>
+                                        <Text
+                                            style={{
+                                                fontFamily: "Lilita_One",
+                                                fontSize: 18,
+                                                textAlign: 'center',
+                                                fontWeight: 'bold',
+                                                color: 'white',
+                                            }}
+                                        >
+                                            MONTO: ${c.monto}
+                                        </Text>
+                                    </View>
+                                ))}
+
+                               <Text style={{
+                                    fontFamily: "Lilita_One",
+                                    fontSize: 20,
+                                    marginTop:15,
+                                    textAlign: 'center',
+                                    fontWeight: 'bold',
+                                    color: 'white',
+                                }}>
+                                    COSTO TOTAL DEL VIAJE: $ {costoTOTAL}
+                                </Text> 
+
+                                <Pressable
+                                    style={styles.btnEstandar}
+                                    onPress={() => setModal(false)}
                                 >
                                     <Text
-                                        style={{
-                                            fontFamily: "Lilita_One",
-                                            fontSize: 16,
-                                            textAlign: 'center',
-                                        }}
-                                    >
-                                        INTEGRANTE  {i.id_integrante}
+                                        style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'black' }}>
+                                        Cerrar
                                     </Text>
-                                </View>
-                            ))}
-
-
-                            <Pressable
-                                style={styles.btnEstandar}
-                                onPress={() => setModal(false)}
-                            >
-                                <Text
-                                    style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'black' }}>
-                                    Cerrar
-                                </Text>
-                            </Pressable>
+                                </Pressable>
+                            </View>
                         </View>
-                    </View>
+                    </ScrollView>
                 </Modal>
             </ScrollView>
         </View>
