@@ -107,6 +107,13 @@ export const Home = () => {
                     style={styles.iconos}
                 />
 
+                {(!viajes || viajes.length === 0) && (
+                    <Text style={[{ fontFamily: "Lilita_One" },
+                    styles.txttitle]}>
+                        En el momento no ahi viajes cargados
+                    </Text>
+                )}
+
                 {viajes.map((viaje) => (
                     <View style={styles.containerlist}
                         key={viaje.id}
@@ -218,7 +225,7 @@ export const Home = () => {
                                 <Text style={{
                                     fontFamily: "Lilita_One",
                                     fontSize: 20,
-                                    marginTop:15,
+                                    marginTop: 15,
                                     textAlign: 'center',
                                     fontWeight: 'bold',
                                     color: 'white',
@@ -248,7 +255,7 @@ export const Home = () => {
                                 <Text style={{
                                     fontFamily: "Lilita_One",
                                     fontSize: 20,
-                                    marginTop:15,
+                                    marginTop: 15,
                                     textAlign: 'center',
                                     fontWeight: 'bold',
                                     color: 'white',
@@ -277,7 +284,7 @@ export const Home = () => {
                                 <Text style={{
                                     fontFamily: "Lilita_One",
                                     fontSize: 20,
-                                    marginTop:15,
+                                    marginTop: 15,
                                     textAlign: 'center',
                                     fontWeight: 'bold',
                                     color: 'white',
@@ -314,16 +321,16 @@ export const Home = () => {
                                     </View>
                                 ))}
 
-                               <Text style={{
+                                <Text style={{
                                     fontFamily: "Lilita_One",
                                     fontSize: 20,
-                                    marginTop:15,
+                                    marginTop: 15,
                                     textAlign: 'center',
                                     fontWeight: 'bold',
                                     color: 'white',
                                 }}>
                                     COSTO TOTAL DEL VIAJE: $ {costoTOTAL}
-                                </Text> 
+                                </Text>
 
                                 <Pressable
                                     style={styles.btnEstandar}
@@ -339,6 +346,6 @@ export const Home = () => {
                     </ScrollView>
                 </Modal>
             </ScrollView>
-        </View>
+        </View >
     )
 }

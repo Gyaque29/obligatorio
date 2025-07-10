@@ -46,7 +46,7 @@ export const SeleccionIntegrantes = () => {
           </Text>
         </Pressable>
       </View>
-      
+
       <Modal
         visible={modal}
         transparent={true}
@@ -111,6 +111,13 @@ export const SeleccionIntegrantes = () => {
             >
               Seleccionar Integrantes !
             </Text>
+
+            {(!personas || personas.length === 0) && (
+              <Text style={[{ fontFamily: "Lilita_One" },
+              styles.txttitle]}>
+                En el momento no ahi personas cargadas !
+              </Text>
+            )}
 
             {personas.map(persona => (
               <View

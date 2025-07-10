@@ -47,7 +47,7 @@ export const SeleccionDestinos = () => {
           </Text>
         </Pressable>
       </View>
-      
+
       <Modal
         visible={modal}
         transparent={true}
@@ -68,6 +68,7 @@ export const SeleccionDestinos = () => {
             >
               Integrantes Destinos !
             </Text>
+
 
             {seleccionados.map(d => (
               <View
@@ -93,7 +94,7 @@ export const SeleccionDestinos = () => {
                   {d.lat}
                 </Text>
 
-                 <Text
+                <Text
                   style={{
                     fontSize: 16,
                     textAlign: 'center'
@@ -122,6 +123,13 @@ export const SeleccionDestinos = () => {
               Seleccionar Destinos !
             </Text>
 
+            {(!destinos || destinos.length === 0) && (
+              <Text style={[{ fontFamily: "Lilita_One" },
+              styles.txttitle]}>
+                En el momento no ahi destinos cargadas !
+              </Text>
+            )}
+
             {destinos.map(d => (
               <View
                 key={d.id}
@@ -146,7 +154,7 @@ export const SeleccionDestinos = () => {
                   {d.lat}
                 </Text>
 
-                 <Text
+                <Text
                   style={{
                     fontSize: 16,
                     textAlign: 'center'

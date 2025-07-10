@@ -15,14 +15,14 @@ export const Costos = () => {
     const [tipo, setTipo] = useState('')
     const [monto, setMonto] = useState('')
 
-    const costo = {id : Date.now(),  tipo, monto }
+    const costo = { id: Date.now(), tipo, monto }
 
     //FUNCION ADDCOSTO DISPATCH Y LIMPIO ESTADOS
     const AddCosto = (costo) => {
-        if(!tipo){
+        if (!tipo) {
             console.log('COSTOS - Campo descripcion vacio')
             return
-        }else if(!monto){
+        } else if (!monto) {
             console.log('COSTOS - Campo monto vacio')
             return
         }
@@ -81,6 +81,12 @@ export const Costos = () => {
                 </Text>
             </Pressable>
 
+            {(!costos || costos.length === 0) && (
+                <Text style={[{ fontFamily: "Lilita_One" },
+                styles.txttitle]}>
+                    En el momento no ahi costos cargados !
+                </Text>
+            )}
 
             {costos.map(c => (
                 <View
