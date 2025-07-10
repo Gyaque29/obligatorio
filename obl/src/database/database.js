@@ -283,7 +283,7 @@ export const getCostosTotalDeViaje = async (id_viaje) => {
 
         let costoTotal = 0
         data.map(d => {
-            costoTotal = costoTotal + Number(d.monto)
+            costoTotal = costoTotal + parseInt(d.monto)
         })
         
         return costoTotal
