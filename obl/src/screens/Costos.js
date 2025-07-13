@@ -10,7 +10,7 @@ import { useState } from "react";
 export const Costos = () => {
 
     const dispatch = useDispatch();
-    const costos = useSelector(state => state.viajes.costos);
+    const costos = useSelector(state => state.viajes.costos)
 
     const [tipo, setTipo] = useState('')
     const [monto, setMonto] = useState('')

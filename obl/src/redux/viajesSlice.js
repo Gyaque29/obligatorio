@@ -26,7 +26,7 @@ export const viajesSlice = createSlice({
 
             if(!existe){
                 state.costos.push(costos)
-                console.log('COSTO - Agregado Correctamente a Redux')
+                console.log('COSTO - Agregado Correctamente a REDUX')
             }
         },
 
@@ -34,7 +34,7 @@ export const viajesSlice = createSlice({
             const { id } = action.payload
 
             state.costos = state.costos.filter(c => c.id !== id)
-            console.log('COSTO - Eliminado Correctamente de Redux')
+            console.log('COSTO - Eliminado Correctamente de REDUX')
         },
 
 
@@ -47,10 +47,10 @@ export const viajesSlice = createSlice({
 
             if(!existe){
              state.destinos.push(destinos)
-             console.log('DESTINO - Agregado Correctamente a Redux')
+             console.log('DESTINO - Agregado Correctamente a REDUX')
             }
             else{
-                console.log('DESTINO - Ya Agregaste el Destino a Redux')
+                console.log('DESTINO - Ya Agregaste el Destino a REDUX')
             }
         },
 
@@ -58,7 +58,7 @@ export const viajesSlice = createSlice({
             const destinos = action.payload
 
             state.destinos = state.destinos.filter(d => d.id !== destinos.id)
-            console.log('DESTINO - Eliminado Correctamente de Redux')
+            console.log('DESTINO - Eliminado Correctamente de REDUX')
         },
 
         
@@ -70,10 +70,10 @@ export const viajesSlice = createSlice({
             
             if(!existe){
                  state.integrantes.push(persona)
-                 console.log('PERSONA - Agregada Correctamente a Redux')
+                 console.log('PERSONA - Agregada Correctamente a REDUX')
             }             
             else{
-                console.log('PERSONA - Ya Agregaste la Persona a Redux')
+                console.log('PERSONA - Ya Agregaste la Persona a REDUX')
             }       
         },
 
@@ -81,7 +81,7 @@ export const viajesSlice = createSlice({
             const persona = action.payload
             
             state.integrantes = state.integrantes.filter(p => p.id !== persona.id)
-            console.log('PERSONA - Eliminada Correctamente de Redux')
+            console.log('PERSONA - Eliminada Correctamente de REDUX')
         }
     }
 })
