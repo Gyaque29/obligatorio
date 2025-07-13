@@ -142,10 +142,10 @@ export const Home = () => {
                         </Text>
                         <Pressable
                             style={styles.btnEstandar}
+                            onPress={() => VerViajeSeleciconado(viaje)}
                         >
                             <Text
-                                style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'black' }}
-                                onPress={() => VerViajeSeleciconado(viaje)}
+                                style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'black' }}                  
                             >
                                 Ver Info
                             </Text>
