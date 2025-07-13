@@ -96,11 +96,9 @@ export const Viajes = () => {
 
                 <SeleccionIntegrantes />
 
-
                 <SeleccionDestinos />
 
                 <Costos />
-
 
                 <Pressable
                     style={styles.btnEstandar}
