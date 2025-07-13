@@ -69,7 +69,6 @@ export const SeleccionDestinos = () => {
               Integrantes Destinos !
             </Text>
 
-
             {seleccionados.map(d => (
               <View
                 key={d.id}

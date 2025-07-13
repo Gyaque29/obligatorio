@@ -129,9 +129,6 @@ export const Costos = () => {
                     </View>
                 </View>
             ))}
-
-
-
         </View>
     )
 }

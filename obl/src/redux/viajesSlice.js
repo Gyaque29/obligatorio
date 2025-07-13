@@ -37,8 +37,6 @@ export const viajesSlice = createSlice({
             console.log('COSTO - Eliminado Correctamente de REDUX')
         },
 
-
-
         //FUNCIONES PARA DESTINOS
         addDestino: (state, action) => {
             const destinos = action.payload
@@ -60,8 +58,7 @@ export const viajesSlice = createSlice({
             state.destinos = state.destinos.filter(d => d.id !== destinos.id)
             console.log('DESTINO - Eliminado Correctamente de REDUX')
         },
-
-        
+       
         //FUNCIONES PARA INTEGRANTES
         addPersona: (state, action) => {
             const persona = action.payload
