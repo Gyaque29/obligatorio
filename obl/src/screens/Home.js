@@ -115,8 +115,8 @@ export const Home = () => {
                 )}
 
                 {viajes.map((viaje) => (
-                    <View style={styles.containerlist}
-                        key={viaje.id}
+                    <View style={styles.containerlist}   
+                        key={viaje.id}   
                     >
                         <Text
                             style={{
@@ -232,12 +232,11 @@ export const Home = () => {
                                 }}>
                                     INTEGRANTES
                                 </Text>
-                                {integrantes.map((i) => (
+                                {integrantes.map((i, index) => (
                                     <View
                                         style={styles.containerlist}
+                                        key={index}
                                     >
-
-
                                         <Text
                                             style={{
                                                 fontFamily: "Lilita_One",
@@ -263,9 +262,10 @@ export const Home = () => {
                                     DESTINOS
                                 </Text>
 
-                                {destinos.map((d) => (
+                                {destinos.map((d, index) => (
                                     <View
                                         style={styles.containerlist}
+                                        key={index}
                                     >
                                         <Text
                                             style={{
@@ -292,9 +292,10 @@ export const Home = () => {
                                     COSTOS
                                 </Text>
 
-                                {costos.map((c) => (
+                                {costos.map((c, index) => (
                                     <View
                                         style={styles.containerlist}
+                                        key={index}
                                     >
                                         <Text
                                             style={{

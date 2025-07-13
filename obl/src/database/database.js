@@ -1,9 +1,11 @@
+//CONFIGURO CONECCION CON SUPABASE
 import { createClient } from "@supabase/supabase-js"
 const supabaseUrl = "https://ozsrlwajhgayduuhxkec.supabase.co";
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96c3Jsd2FqaGdheWR1dWh4a2VjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk2ODUxODYsImV4cCI6MjA2NTI2MTE4Nn0.fXL-Fgg1XB8BpaaXDHy1Qo-owvJygN1KCbu8BNGrfcw";
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+//METODOS PARA ADD, GET, DEL, UPD Y TABLAS RESULTANTES
 
 //METODO ADD PERSONA
 export const addPersona = async (nombre, telefono) => {
@@ -11,7 +13,7 @@ export const addPersona = async (nombre, telefono) => {
         const { data } = await supabase
             .from('integrantes')
             .insert({ nombre, telefono });
-        console.log('PERSONAS -  Aargado correctamente');
+        console.log('PERSONAS - ADD -  con exito');
         return data;
 
     } catch (e) {
@@ -23,7 +25,7 @@ export const addPersona = async (nombre, telefono) => {
 export const getPersonas = async () => {
     try {
         const { data } = await supabase.from('integrantes').select('*');
-        console.log('PERSONAS - Consulta GET con exito');
+        console.log('PERSONAS - GET - con exito');
         return data;
     } catch (e) {
         console.log(e);
@@ -34,7 +36,7 @@ export const getPersonas = async () => {
 export const deletePersona = async (id) => {
     try {
         const { data } = await supabase.from('integrantes').delete().eq('id', id);
-        console.log('PERSONAS - Eliminado con exito');
+        console.log('PERSONAS - DEL - con exito');
         return data;
     } catch (e) {
         console.log(e);
@@ -46,7 +48,7 @@ export const editarPersona = async (id, nombre, telefono) => {
     const persona = { nombre, telefono }
     try {
         const { data } = await supabase.from('integrantes').update(persona).eq('id', id);
-        console.log('PERSONAS - Editado con exito');
+        console.log('PERSONAS - UPD - con exito');
         return data;
     } catch (e) {
         console.log(e);
@@ -59,7 +61,7 @@ export const addDestino = async (nombre, lat, long) => {
         const { data } = await supabase
             .from('destinos')
             .insert({ nombre, lat, long });
-        console.log('DESTINOS - Agregado correctamente');
+        console.log('DESTINOS - ADD - con exito');
         return data;
 
     } catch (e) {
@@ -71,7 +73,7 @@ export const addDestino = async (nombre, lat, long) => {
 export const getDestinos = async () => {
     try {
         const { data } = await supabase.from('destinos').select('*');
-        console.log('DESTINOS - Consulta GET con exito');
+        console.log('DESTINOS - GET - con exito');
         return data;
     } catch (e) {
         console.log(e);
@@ -82,7 +84,7 @@ export const getDestinos = async () => {
 export const deleteDestino = async (id) => {
     try {
         const { data } = await supabase.from('destinos').delete().eq('id', id);
-        console.log('DESTINOS - Eliminado con exito');
+        console.log('DESTINOS - DEL - con exito');
         return data;
     } catch (e) {
         console.log(e);
@@ -94,7 +96,7 @@ export const editDestino = async (id, nombre, lat, long) => {
     const destino = { nombre, lat, long }
     try {
         const { data } = await supabase.from('destinos').update(destino).eq('id', id);
-        console.log('DESTINOS - Editado con exito');
+        console.log('DESTINOS - UPD - con exito');
         return data;
     } catch (e) {
         console.log(e);
@@ -108,11 +110,22 @@ export const addViaje = async (viaje) => {
             .from('viajes')
             .insert(viaje)
             .select()
-        console.log('VIAJES - Creado Correctamente')
+        console.log('VIAJES - ADD - con exito')
         return data
 
     } catch (e) {
-        console.log('VIAJES - Error al cargar Viaje', e)
+        console.log(e)
+    }
+}
+
+//METODO GET PARA OBTENER LOS VIAJES 
+export const getViajes = async () => {
+    try {
+        const { data } = await supabase.from('viajes').select('*');
+        console.log('VIAJES - GET - con exito ');
+        return data;
+    } catch (e) {
+        console.log(e);
     }
 }
 
@@ -124,10 +137,10 @@ export const addViajeIntegrante = async (id_viaje, id_integrante) => {
         const { data } = await supabase
             .from('viajeintegrante')
             .insert(viajeintegrante)
-        console.log('VIAJES INTEGRANTES - Integrante Creado Correctamente')
+        console.log('VIAJES INTEGRANTES - Integrante ADD con exito')
         return data
     } catch (e) {
-        console.log('VIAJES IUNTEGRANTES - Error al cargar Viaje Integrante', e)
+        console.log(e)
     }
 }
 
@@ -139,10 +152,10 @@ export const addviajeDestino = async (id_viaje, id_destino) => {
         const { data } = await supabase
             .from('viajedestino')
             .insert(viajedestino)
-        console.log('VIAJE DESTINO - Creado Correctamente')
+        console.log('VIAJE DESTINO - ADD - con exito')
         return data
     } catch (e) {
-        console.log('VIAJE DESTINO - Error al cargar Viaje Destino', e)
+        console.log(e)
     }
 }
 
@@ -154,7 +167,7 @@ export const addCosto = async (c, id_viaje) => {
         const { data } = await supabase
             .from('costos')
             .insert(costo);
-        console.log('COSTO - Creado Correctamente')
+        console.log('COSTO - ADD - con exito')
         return data;
 
     } catch (e) {
@@ -173,7 +186,7 @@ export const crearViajeCompleto = async (nombre, fechaInicio, fechaFin, integran
         const id_viaje = resultado[0].id
 
         integrantes.map(i => {
-            addViajeIntegrante(id_viaje, i.id)
+           addViajeIntegrante(id_viaje, i.id)
         })
 
         destinos.map(d => {
@@ -186,17 +199,6 @@ export const crearViajeCompleto = async (nombre, fechaInicio, fechaFin, integran
 
         return resultado
 
-    } catch (e) {
-        console.log('Error al cargar Viaje', e);
-    }
-}
-
-//METODO GET PARA OBTENER LOS VIAJES 
-export const getViajes = async () => {
-    try {
-        const { data } = await supabase.from('viajes').select('*');
-        console.log('VIAJES - Consulta GET con exito');
-        return data;
     } catch (e) {
         console.log(e);
     }
