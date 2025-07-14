@@ -56,7 +56,6 @@ export const Viajes = () => {
         dispatch(resetArreglo(integrantes, destinos, costos))
     }
 
-
     //FUENTES CARGADAS
     let [fontsLoaded] = useFonts({
         Chicle: require('../font/Chicle/Chicle-Regular.ttf'),
@@ -108,8 +107,7 @@ export const Viajes = () => {
                         style={{ fontFamily: "Lilita_One", fontSize: 16, color: 'white' }}>
                         Agregar Viaje
                     </Text>
-                </Pressable>
-
+                </Pressable> 
             </ScrollView>
         </View>
     )

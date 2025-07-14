@@ -18,6 +18,13 @@ export const ListaPersonas = ({
 }) => {
     return (
         <>
+            {(!personas || personas.length === 0) && (
+                <Text style={[{ fontFamily: "Lilita_One" },
+                styles.txttitle]}>
+                    En el momento no ahi integrantes cargados
+                </Text>
+            )}
+
             {/*MAPEO EL ESTADO QUE TIENE LAS PERSONAS */}
             {personas.map((personas) => (
                 <View style={styles.containerlist}
@@ -76,7 +83,6 @@ export const ListaPersonas = ({
                 animationType="slide"
                 onRequestClose={() => setModal(false)}
             >
-
                 <View
                     style={styles.ModalEditar}
                 >

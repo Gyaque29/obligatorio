@@ -20,6 +20,13 @@ export const ListaDestinos = ({
 }) => {
     return (
         <>
+            {(!destinos || destinos.length === 0) && (
+                <Text style={[{ fontFamily: "Lilita_One" },
+                styles.txttitle]}>
+                    En el momento no ahi destinos cargados
+                </Text>
+            )}
+
             {destinos.map((destino) => (
                 <View
                     key={destino.id}

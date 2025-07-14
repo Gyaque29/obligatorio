@@ -62,6 +62,5 @@ export const FormDestino = ({
                 </Text>
             </Pressable>
         </View>
-
     )
 }

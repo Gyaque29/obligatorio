@@ -6,7 +6,6 @@ export const viajesSlice = createSlice({
         integrantes: [],
         destinos: [],
         costos: [],
-
     },
 
     reducers: {
